@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Orientada a Objetos - Conceptos Básicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #1e3c72;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #666;
+        }
+
+        /* Secciones de conceptos */
+        .concepto {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .concepto:hover {
+            transform: translateY(-5px);
+        }
+
+        .concepto h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 15px;
+            border-left: 5px solid #2a5298;
+            padding-left: 15px;
+        }
+
+        .concepto-numero {
+            background: #2a5298;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .definicion {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #2a5298;
+        }
+
+        .definicion h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        /* Ejemplos de código */
+        .ejemplo-codigo {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        /* Ejemplo visual */
+        .ejemplo-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .ejemplo-visual h4 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        /* Grid para comparaciones */
+        .comparacion {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .item-comparacion {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #2a5298;
+        }
+
+        .item-comparacion h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Iconos con emojis grandes */
+        .icono {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        /* Lista de características */
+        .caracteristicas {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .caracteristicas li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .caracteristicas li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>💻 Programación Orientada a Objetos</h1>
+            <p>Conceptos Básicos Explicados de Forma Simple</p>
+        </header>
+
+        <!-- CONCEPTO 1: CLASE -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">1</span>¿Qué es una CLASE?</h2>
+            
+            <div class="definicion">
+                <h3>📋 Definición:</h3>
+                <p>Una clase es como un <strong>molde o plantilla</strong> que define las características (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">🍪</div>
+                <h4>Piensa en un molde de galletas</h4>
+                <p>El molde define la forma, pero no es la galleta en sí</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">class</span> <span class="function">Persona</span> {
+    <span class="comment">// Atributos (características)</span>
+    nombre: <span class="keyword">string</span>;
+    edad: <span class="keyword">number</span>;
+    
+    <span class="comment">// Constructor</span>
+    <span class="keyword">constructor</span>(nombre: <span class="keyword">string</span>, edad: <span class="keyword">number</span>) {
+        <span class="keyword">this</span>.nombre = nombre;
+        <span class="keyword">this</span>.edad = edad;
+    }
+    
+    <span class="comment">// Método (acción)</span>
+    <span class="function">saludar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Hola, soy "</span> + <span class="keyword">this</span>.nombre;
+    }
+}
+            </div>
+
+            <ul class="caracteristicas">
+                <li>Define la estructura de los objetos</li>
+                <li>Contiene atributos (datos) y métodos (funciones)</li>
+                <li>Es reutilizable para crear múltiples objetos</li>
+            </ul>
+        </div>
+
+        <!-- CONCEPTO 2: OBJETO -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">2</span>¿Qué es un OBJETO?</h2>
+            
+            <div class="definicion">
+                <h3>📦 Definición:</h3>
+                <p>Un objeto es una <strong>instancia concreta</strong> de una clase. Es algo real y específico creado usando el molde (clase).</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">👤</div>
+                <h4>De la clase Persona creamos objetos reales</h4>
+                <p>Juan (25 años) y María (30 años) son objetos diferentes de la misma clase</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="comment">// Crear objetos (instancias)</span>
+<span class="keyword">const</span> persona1 = <span class="keyword">new</span> <span class="function">Persona</span>(<span class="string">"Juan"</span>, 25);
+<span class="keyword">const</span> persona2 = <span class="keyword">new</span> <span class="function">Persona</span>(<span class="string">"María"</span>, 30);
+
+<span class="comment">// Usar los objetos</span>
+persona1.<span class="function">saludar</span>(); <span class="comment">// "Hola, soy Juan"</span>
+persona2.<span class="function">saludar</span>(); <span class="comment">// "Hola, soy María"</span>
+            </div>
+
+            <div class="comparacion">
+                <div class="item-comparacion">
+                    <h4>CLASE</h4>
+                    <p>Es abstracta (el molde)</p>
+                    <p>Define la estructura</p>
+                </div>
+                <div class="item-comparacion">
+                    <h4>OBJETO</h4>
+                    <p>Es concreto (la galleta)</p>
+                    <p>Tiene valores específicos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONCEPTO 3: HERENCIA -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">3</span>¿Qué es la HERENCIA?</h2>
+            
+            <div class="definicion">
+                <h3>🧬 Definición:</h3>
+                <p>La herencia permite que una clase <strong>herede atributos y métodos</strong> de otra clase. La clase hija obtiene todo de la clase padre y puede agregar sus propias características.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">👨‍👦</div>
+                <h4>Como la herencia familiar</h4>
+                <p>Un hijo hereda características de sus padres, pero también tiene las suyas propias</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">class</span> <span class="function">Estudiante</span> <span class="keyword">extends</span> <span class="function">Persona</span> {
+    carrera: <span class="keyword">string</span>;
+    
+    <span class="keyword">constructor</span>(nombre: <span class="keyword">string</span>, edad: <span class="keyword">number</span>, carrera: <span class="keyword">string</span>) {
+        <span class="keyword">super</span>(nombre, edad); <span class="comment">// Llama al constructor del padre</span>
+        <span class="keyword">this</span>.carrera = carrera;
+    }
+    
+    <span class="comment">// Método propio de Estudiante</span>
+    <span class="function">estudiar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Estudiando "</span> + <span class="keyword">this</span>.carrera;
+    }
+}
+
+<span class="keyword">const</span> estudiante = <span class="keyword">new</span> <span class="function">Estudiante</span>(<span class="string">"Carlos"</span>, 20, <span class="string">"Ingeniería"</span>);
+estudiante.<span class="function">saludar</span>();   <span class="comment">// Heredado de Persona</span>
+estudiante.<span class="function">estudiar</span>();  <span class="comment">// Propio de Estudiante</span>
+            </div>
+
+            <ul class="caracteristicas">
+                <li>Permite reutilizar código</li>
+                <li>Crea relaciones "es un" (Estudiante ES UNA Persona)</li>
+                <li>La clase hija puede extender funcionalidad</li>
+            </ul>
+        </div>
+
+        <!-- CONCEPTO 4: CLASE ABSTRACTA -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">4</span>¿Qué es una CLASE ABSTRACTA?</h2>
+            
+            <div class="definicion">
+                <h3>🚫 Definición:</h3>
+                <p>Una clase abstracta es una clase que <strong>NO se puede instanciar</strong> directamente. Solo sirve como base para otras clases y define métodos que las clases hijas DEBEN implementar.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">🐾</div>
+                <h4>Concepto de "Animal"</h4>
+                <p>No existe un "animal" genérico. Existen perros, gatos, etc. pero no puedes crear "un animal" sin más.</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">abstract class</span> <span class="function">Animal</span> {
+    nombre: <span class="keyword">string</span>;
+    
+    <span class="keyword">constructor</span>(nombre: <span class="keyword">string</span>) {
+        <span class="keyword">this</span>.nombre = nombre;
+    }
+    
+    <span class="comment">// Método abstracto: las clases hijas DEBEN implementarlo</span>
+    <span class="keyword">abstract</span> <span class="function">hacerSonido</span>(): <span class="keyword">string</span>;
+}
+
+<span class="keyword">class</span> <span class="function">Perro</span> <span class="keyword">extends</span> <span class="function">Animal</span> {
+    <span class="function">hacerSonido</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"¡Guau guau!"</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="function">Gato</span> <span class="keyword">extends</span> <span class="function">Animal</span> {
+    <span class="function">hacerSonido</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"¡Miau miau!"</span>;
+    }
+}
+            </div>
+
+            <ul class="caracteristicas">
+                <li>No se puede instanciar directamente</li>
+                <li>Define estructura común para clases hijas</li>
+                <li>Obliga a implementar ciertos métodos</li>
+            </ul>
+        </div>
+
+        <!-- CONCEPTO 5: POLIMORFISMO -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">5</span>¿Qué es el POLIMORFISMO?</h2>
+            
+            <div class="definicion">
+                <h3>🎭 Definición:</h3>
+                <p>Polimorfismo significa <strong>"muchas formas"</strong>. Es la capacidad de diferentes clases de responder al mismo método de manera diferente.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">🔊</div>
+                <h4>Mismo método, diferentes resultados</h4>
+                <p>Todos los animales "hacen sonido", pero cada uno lo hace diferente</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">const</span> animales: <span class="function">Animal</span>[] = [
+    <span class="keyword">new</span> <span class="function">Perro</span>(<span class="string">"Firulais"</span>),
+    <span class="keyword">new</span> <span class="function">Gato</span>(<span class="string">"Michi"</span>)
+];
+
+<span class="comment">// El mismo método, resultados diferentes según el tipo</span>
+animales.<span class="function">forEach</span>(animal => {
+    console.<span class="function">log</span>(animal.<span class="function">hacerSonido</span>());
+});
+<span class="comment">// Salida:</span>
+<span class="comment">// ¡Guau guau!</span>
+<span class="comment">// ¡Miau miau!</span>
+            </div>
+
+            <ul class="caracteristicas">
+                <li>Mismo método, diferentes implementaciones</li>
+                <li>Permite código más flexible y extensible</li>
+                <li>Facilita agregar nuevos tipos sin cambiar código existente</li>
+            </ul>
+        </div>
+
+        <!-- CONCEPTO 6: INTERFACE -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">6</span>¿Qué es una INTERFACE?</h2>
+            
+            <div class="definicion">
+                <h3>📜 Definición:</h3>
+                <p>Una interface es un <strong>contrato</strong> que define QUÉ métodos debe tener una clase, pero no CÓMO implementarlos.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">✈️</div>
+                <h4>Contrato de "poder volar"</h4>
+                <p>Tanto un pájaro como un avión pueden volar, aunque son muy diferentes</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">interface</span> <span class="function">Volador</span> {
+    <span class="function">volar</span>(): <span class="keyword">string</span>;
+    <span class="function">aterrizar</span>(): <span class="keyword">string</span>;
+}
+
+<span class="keyword">class</span> <span class="function">Pajaro</span> <span class="keyword">implements</span> <span class="function">Volador</span> {
+    <span class="function">volar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Batiendo las alas"</span>;
+    }
+    
+    <span class="function">aterrizar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Posándose en una rama"</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="function">Avion</span> <span class="keyword">implements</span> <span class="function">Volador</span> {
+    <span class="function">volar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Impulsado por motores"</span>;
+    }
+    
+    <span class="function">aterrizar</span>(): <span class="keyword">string</span> {
+        <span class="keyword">return</span> <span class="string">"Aterrizando en pista"</span>;
+    }
+}
+            </div>
+
+            <ul class="caracteristicas">
+                <li>Define un contrato que las clases deben cumplir</li>
+                <li>Permite que clases diferentes compartan comportamientos</li>
+                <li>Una clase puede implementar múltiples interfaces</li>
+            </ul>
+        </div>
+
+        <!-- CONCEPTO 7: ENCAPSULAMIENTO -->
+        <div class="concepto">
+            <h2><span class="concepto-numero">7</span>¿Qué es el ENCAPSULAMIENTO?</h2>
+            
+            <div class="definicion">
+                <h3>🔒 Definición:</h3>
+                <p>El encapsulamiento es <strong>proteger los datos</strong> internos de una clase y controlar cómo se accede a ellos mediante métodos públicos.</p>
+            </div>
+
+            <div class="ejemplo-visual">
+                <div class="icono">🏦</div>
+                <h4>Como una cuenta bancaria</h4>
+                <p>No puedes cambiar el saldo directamente, solo a través de operaciones controladas (depositar, retirar)</p>
+            </div>
+
+            <div class="ejemplo-codigo">
+<span class="keyword">class</span> <span class="function">CuentaBancaria</span> {
+    <span class="keyword">private</span> saldo: <span class="keyword">number</span>; <span class="comment">// Privado: no accesible desde fuera</span>
+    
+    <span class="keyword">constructor</span>(saldoInicial: <span class="keyword">number</span>) {
+        <span class="keyword">this</span>.saldo = saldoInicial;
+    }
+    
+    <span class="comment">// Métodos públicos para acceder al saldo</span>
+    <span class="function">getSaldo</span>(): <span class="keyword">number</span> {
+        <span class="keyword">return</span> <span class="keyword">this</span>.saldo;
+    }
+    
+    <span class="function">depositar</span>(cantidad: <span class="keyword">number</span>): <span class="keyword">void</span> {
+        <span class="keyword">if</span> (cantidad > 0) {
+            <span class="keyword">this</span>.saldo += cantidad;
+        }
+    }
+    
+    <span class="function">retirar</span>(cantidad: <span class="keyword">number</span>): <span class="keyword">boolean</span> {
+        <span class="keyword">if</span> (cantidad > 0 && cantidad <= <span class="keyword">this</span>.saldo) {
+            <span class="keyword">this</span>.saldo -= cantidad;
+            <span class="keyword">return true</span>;
+        }
+        <span class="keyword">return false</span>;
+    }
+}
+            </div>
+
+            <div class="comparacion">
+                <div class="item-comparacion">
+                    <h4>🔓 public</h4>
+                    <p>Accesible desde cualquier lugar</p>
+                </div>
+                <div class="item-comparacion">
+                    <h4>🔒 private</h4>
+                    <p>Solo accesible dentro de la clase</p>
+                </div>
+                <div class="item-comparacion">
+                    <h4>🔐 protected</h4>
+                    <p>Accesible en la clase y sus hijas</p>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</body>
+</html>
