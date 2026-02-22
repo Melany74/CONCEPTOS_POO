@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Aprendizaje - Desarrollo Móvil</title>
+    <title>Portal Académico - Desarrollo Móvil</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0a0a0f;
             --surface: #12121a;
-            --surface2: #1a1a26;
             --accent: #5b6af0;
             --accent2: #e04bff;
             --accent3: #00e5c0;
@@ -25,15 +24,13 @@
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Animated background grid */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(91,106,240,0.04) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(91,106,240,0.04) 1px, transparent 1px);
             background-size: 60px 60px;
@@ -41,43 +38,17 @@
             z-index: 0;
         }
 
-        /* Glowing orbs */
-        body::after {
-            content: '';
-            position: fixed;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(91,106,240,0.15) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
+        .page { display: none; position: relative; z-index: 1; }
+        .page.active { display: block; }
 
-        .orb2 {
-            position: fixed;
-            bottom: -150px;
-            left: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(224,75,255,0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .wrapper {
-            position: relative;
-            z-index: 1;
+        /* ====== HOME ====== */
+        .home-wrapper {
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 24px 80px;
         }
 
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 60px 0 70px;
-        }
+        .header { text-align: center; padding: 60px 0 50px; }
 
         .header-badge {
             display: inline-block;
@@ -93,7 +64,7 @@
         }
 
         .header h1 {
-            font-size: clamp(2.2em, 5vw, 3.8em);
+            font-size: clamp(2em, 5vw, 3.6em);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 16px;
@@ -103,157 +74,8 @@
             background-clip: text;
         }
 
-        .header p {
-            color: var(--text-muted);
-            font-size: 1.1em;
-            font-weight: 400;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        .header p { color: var(--text-muted); font-size: 1.1em; }
 
-        /* Section title */
-        .section-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7em;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* Cards section */
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .cards-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .cards-grid.single { grid-template-columns: 1fr; }
-        .cards-grid.duo { grid-template-columns: repeat(2, 1fr); }
-        .cards-grid.quad { grid-template-columns: repeat(2, 1fr); }
-
-        @media (max-width: 640px) {
-            .cards-grid.duo,
-            .cards-grid.quad { grid-template-columns: 1fr; }
-        }
-
-        /* Card */
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 30px;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(91,106,240,0.08) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(91,106,240,0.15);
-        }
-
-        .card:hover::before { opacity: 1; }
-
-        /* Featured card (POO) */
-        .card.featured {
-            background: linear-gradient(135deg, #141428 0%, #1a1a35 100%);
-            border-color: rgba(91,106,240,0.4);
-            padding: 36px;
-        }
-
-        .card.featured:hover {
-            border-color: var(--accent);
-            box-shadow: 0 25px 60px rgba(91,106,240,0.25);
-        }
-
-        .card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6em;
-            flex-shrink: 0;
-        }
-
-        .icon-blue { background: rgba(91,106,240,0.15); border: 1px solid rgba(91,106,240,0.3); }
-        .icon-purple { background: rgba(224,75,255,0.12); border: 1px solid rgba(224,75,255,0.25); }
-        .icon-teal { background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.25); }
-        .icon-orange { background: rgba(255,160,50,0.12); border: 1px solid rgba(255,160,50,0.25); }
-        .icon-pink { background: rgba(255,80,120,0.12); border: 1px solid rgba(255,80,120,0.25); }
-        .icon-green { background: rgba(80,220,100,0.1); border: 1px solid rgba(80,220,100,0.25); }
-        .icon-yellow { background: rgba(255,220,50,0.1); border: 1px solid rgba(255,220,50,0.25); }
-        .icon-cyan { background: rgba(50,200,255,0.1); border: 1px solid rgba(50,200,255,0.25); }
-
-        .card-content { flex: 1; min-width: 0; }
-
-        .card-number {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.68em;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            letter-spacing: 0.05em;
-        }
-
-        .card-title {
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-
-        .card.featured .card-title { font-size: 1.4em; }
-
-        .card-desc {
-            font-size: 0.85em;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .card-arrow {
-            font-size: 1.3em;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .card:hover .card-arrow {
-            color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        /* Stats bar */
         .stats-bar {
             display: flex;
             gap: 32px;
@@ -261,15 +83,11 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 20px 30px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
 
-        .stat {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+        .stat { display: flex; flex-direction: column; gap: 4px; }
 
         .stat-value {
             font-size: 1.6em;
@@ -280,201 +98,617 @@
             background-clip: text;
         }
 
-        .stat-label {
-            font-size: 0.78em;
-            color: var(--text-muted);
+        .stat-label { font-size: 0.75em; color: var(--text-muted); font-family: 'Space Mono', monospace; }
+        .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+        .section-label {
             font-family: 'Space Mono', monospace;
-            letter-spacing: 0.05em;
-        }
-
-        .stat-divider {
-            width: 1px;
-            background: var(--border);
-            align-self: stretch;
-        }
-
-        /* Progress dots */
-        .progress-dots {
+            font-size: 0.7em;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
             display: flex;
-            gap: 6px;
-            margin-top: 8px;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
         }
 
-        .dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: var(--border);
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .section { margin-bottom: 40px; }
+
+        .cards-grid { display: grid; gap: 14px; }
+        .cards-grid.two { grid-template-columns: repeat(2, 1fr); }
+
+        @media (max-width: 600px) { .cards-grid.two { grid-template-columns: 1fr; } }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .dot.active { background: var(--accent3); }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(91,106,240,0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
-        /* Tag badge */
+        .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(91,106,240,0.15); }
+        .card:hover::before { opacity: 1; }
+
+        .card.featured {
+            background: linear-gradient(135deg, #141428, #1a1a35);
+            border-color: rgba(91,106,240,0.4);
+            padding: 32px;
+        }
+
+        .card-icon {
+            width: 50px; height: 50px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .ib { background: rgba(91,106,240,0.15); border: 1px solid rgba(91,106,240,0.3); }
+        .ip { background: rgba(224,75,255,0.12); border: 1px solid rgba(224,75,255,0.25); }
+        .it { background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.25); }
+        .io { background: rgba(255,160,50,0.12); border: 1px solid rgba(255,160,50,0.25); }
+        .ipk { background: rgba(255,80,120,0.12); border: 1px solid rgba(255,80,120,0.25); }
+        .ig { background: rgba(80,220,100,0.1); border: 1px solid rgba(80,220,100,0.25); }
+        .iy { background: rgba(255,220,50,0.1); border: 1px solid rgba(255,220,50,0.25); }
+        .ic { background: rgba(50,200,255,0.1); border: 1px solid rgba(50,200,255,0.25); }
+
+        .card-content { flex: 1; }
+
         .card-tag {
             font-family: 'Space Mono', monospace;
-            font-size: 0.65em;
+            font-size: 0.63em;
             letter-spacing: 0.1em;
             padding: 3px 10px;
             border-radius: 100px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: inline-block;
         }
 
         .tag-poo { background: rgba(91,106,240,0.15); color: #8b98ff; border: 1px solid rgba(91,106,240,0.3); }
-        .tag-deber { background: rgba(224,75,255,0.12); color: #e87fff; border: 1px solid rgba(224,75,255,0.25); }
-        .tag-leccion { background: rgba(0,229,192,0.1); color: #5fffde; border: 1px solid rgba(0,229,192,0.25); }
+        .tag-d { background: rgba(224,75,255,0.12); color: #e87fff; border: 1px solid rgba(224,75,255,0.25); }
+        .tag-l { background: rgba(0,229,192,0.1); color: #5fffde; border: 1px solid rgba(0,229,192,0.25); }
 
-        /* Animations */
+        .card-title { font-size: 1.05em; font-weight: 700; margin-bottom: 4px; }
+        .card.featured .card-title { font-size: 1.3em; }
+        .card-desc { font-size: 0.82em; color: var(--text-muted); font-weight: 400; }
+        .card-arrow { font-size: 1.2em; color: var(--text-muted); transition: all 0.3s; flex-shrink: 0; }
+        .card:hover .card-arrow { color: var(--accent); transform: translateX(4px); }
+
+        /* ====== BACK BUTTON ====== */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(91,106,240,0.15);
+            color: var(--accent);
+            border: 1px solid rgba(91,106,240,0.3);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 24px 24px 0;
+        }
+
+        .back-btn:hover { background: rgba(91,106,240,0.25); transform: translateX(-3px); }
+
+        /* ====== POO PAGE ====== */
+        .poo-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .poo-header {
+            background: linear-gradient(135deg, #141428, #1a1a35);
+            border: 1px solid rgba(91,106,240,0.3);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .poo-header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .poo-header p { color: var(--text-muted); }
+
+        .concepto {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .concepto:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+        .concepto h2 {
+            font-size: 1.6em;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--accent);
+            padding-left: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .concepto-num {
+            background: var(--accent);
+            color: white;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .definicion {
+            background: rgba(91,106,240,0.08);
+            border: 1px solid rgba(91,106,240,0.2);
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 14px 0;
+        }
+
+        .definicion h3 { color: #8b98ff; margin-bottom: 8px; font-size: 0.95em; }
+        .definicion p { color: var(--text); line-height: 1.7; }
+
+        .ejemplo-visual {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 14px 0;
+            text-align: center;
+        }
+
+        .ejemplo-visual .icono { font-size: 2.5em; margin-bottom: 8px; }
+        .ejemplo-visual h4 { margin-bottom: 6px; font-size: 1.1em; }
+        .ejemplo-visual p { font-size: 0.9em; opacity: 0.85; }
+
+        .ejemplo-codigo {
+            background: #0d0d14;
+            border: 1px solid rgba(91,106,240,0.2);
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 14px 0;
+            overflow-x: auto;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85em;
+            line-height: 1.7;
+        }
+
+        .kw { color: #569cd6; }
+        .str { color: #ce9178; }
+        .cmt { color: #6a9955; }
+        .fn { color: #dcdcaa; }
+
+        .caracteristicas { list-style: none; padding: 0; margin-top: 14px; }
+        .caracteristicas li { padding: 8px 0 8px 28px; position: relative; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.95em; }
+        .caracteristicas li:before { content: "✓"; position: absolute; left: 0; color: var(--accent3); font-weight: bold; }
+
+        .comparacion { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 14px 0; }
+        .item-comp { background: rgba(91,106,240,0.07); border: 1px solid rgba(91,106,240,0.2); padding: 18px; border-radius: 10px; }
+        .item-comp h4 { color: #8b98ff; margin-bottom: 8px; }
+        .item-comp p { color: var(--text-muted); font-size: 0.88em; }
+
+        .video-label { color: var(--text); font-size: 1.3em; font-weight: 700; margin: 30px 0 6px; }
+        .video-sub { color: var(--text-muted); margin-bottom: 14px; font-size: 0.9em; }
+
+        /* ====== COMING SOON ====== */
+        .soon-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .soon-icon { font-size: 4em; margin-bottom: 20px; }
+        .soon-title { font-size: 1.8em; font-weight: 800; margin-bottom: 14px; }
+        .soon-desc { color: var(--text-muted); font-size: 1em; line-height: 1.8; }
+        .soon-badge {
+            display: inline-block;
+            margin-top: 24px;
+            background: rgba(91,106,240,0.15);
+            border: 1px solid rgba(91,106,240,0.3);
+            color: #8b98ff;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8em;
+        }
+
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .header { animation: fadeUp 0.6s ease both; }
-        .stats-bar { animation: fadeUp 0.6s ease 0.1s both; }
-        .section:nth-child(1) { animation: fadeUp 0.6s ease 0.2s both; }
-        .section:nth-child(2) { animation: fadeUp 0.6s ease 0.3s both; }
-        .section:nth-child(3) { animation: fadeUp 0.6s ease 0.4s both; }
+        .page.active > * { animation: fadeUp 0.4s ease both; }
     </style>
 </head>
 <body>
-    <div class="orb2"></div>
 
-    <div class="wrapper">
-        <!-- Header -->
+<!-- ========== HOME ========== -->
+<div id="page-home" class="page active">
+    <div class="home-wrapper">
         <div class="header">
             <div class="header-badge">⚡ Portal Académico</div>
             <h1>Desarrollo de<br>Aplicaciones Móviles</h1>
-            <p>Selecciona un tema para comenzar tu aprendizaje</p>
+            <p>Selecciona un tema para comenzar</p>
         </div>
 
-        <!-- Stats bar -->
         <div class="stats-bar">
-            <div class="stat">
-                
-                <span class="stat-label">Tema Principal</span>
-            </div>
+            <div class="stat"><span class="stat-value"></span><span class="stat-label">Tema Principal</span></div>
             <div class="stat-divider"></div>
-            <div class="stat">
-                
-                <span class="stat-label">Deberes</span>
-            </div>
+            <div class="stat"><span class="stat-value"></span><span class="stat-label">Deberes</span></div>
             <div class="stat-divider"></div>
-            <div class="stat">
-        
-                <span class="stat-label">Lecciones</span>
-            </div>
+            <div class="stat"><span class="stat-value"></span><span class="stat-label">Lecciones</span></div>
             <div class="stat-divider"></div>
-            <div class="stat">
-        
-                
+            <div class="stat"><span class="stat-value"></span><span class="stat-label">Total Secciones</span></div>
+        </div>
 
-        <!-- POO Section -->
         <div class="section">
             <div class="section-label">Contenido Principal</div>
-            <div class="cards-grid single">
-                <a href="poo.html" class="card featured">
-                    <div class="card-icon icon-blue">💻</div>
+            <div class="cards-grid">
+                <div class="card featured" onclick="showPage('page-poo')">
+                    <div class="card-icon ib">💻</div>
                     <div class="card-content">
                         <div class="card-tag tag-poo">Tema Central</div>
                         <div class="card-title">Programación Orientada a Objetos</div>
                         <div class="card-desc">Clases, objetos, herencia, polimorfismo, interfaces y encapsulamiento</div>
-                        <div class="progress-dots">
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                            <div class="dot active"></div>
-                        </div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
+                </div>
             </div>
         </div>
 
-        <!-- Deberes Section -->
         <div class="section">
             <div class="section-label">Deberes</div>
-            <div class="cards-grid quad">
-                <a href="#" class="card">
-                    <div class="card-icon icon-purple">🌐</div>
+            <div class="cards-grid two">
+                <div class="card" onclick="showPage('page-deber1')">
+                    <div class="card-icon ip">🌐</div>
                     <div class="card-content">
-                        <div class="card-tag tag-deber">Deber 01</div>
+                        <div class="card-tag tag-d">Deber 01</div>
                         <div class="card-title">Consumo de una API</div>
                         <div class="card-desc">Integración y consumo de servicios REST</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
-
-                <a href="#" class="card">
-                    <div class="card-icon icon-orange">🔐</div>
+                </div>
+                <div class="card" onclick="showPage('page-deber2')">
+                    <div class="card-icon io">🔐</div>
                     <div class="card-content">
-                        <div class="card-tag tag-deber">Deber 02</div>
+                        <div class="card-tag tag-d">Deber 02</div>
                         <div class="card-title">Autenticación email/password y Google</div>
                         <div class="card-desc">Firebase Auth y proveedores de identidad</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
-
-                <a href="#" class="card">
-                    <div class="card-icon icon-teal">🔥</div>
+                </div>
+                <div class="card" onclick="showPage('page-deber3')">
+                    <div class="card-icon it">🔥</div>
                     <div class="card-content">
-                        <div class="card-tag tag-deber">Deber 03</div>
+                        <div class="card-tag tag-d">Deber 03</div>
                         <div class="card-title">CRUD con Realtime Database</div>
-                        <div class="card-desc">Operaciones Create, Read, Update, Delete</div>
+                        <div class="card-desc">Create, Read, Update, Delete con Firebase</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
-
-                <a href="#" class="card">
-                    <div class="card-icon icon-pink">🗄️</div>
+                </div>
+                <div class="card" onclick="showPage('page-deber4')">
+                    <div class="card-icon ipk">🗄️</div>
                     <div class="card-content">
-                        <div class="card-tag tag-deber">Deber 04</div>
+                        <div class="card-tag tag-d">Deber 04</div>
                         <div class="card-title">CRUD utilizando Room</div>
                         <div class="card-desc">Persistencia local con Room Database</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
+                </div>
             </div>
         </div>
 
-        <!-- Lecciones Section -->
         <div class="section">
             <div class="section-label">Lecciones</div>
             <div class="cards-grid">
-                <a href="#" class="card">
-                    <div class="card-icon icon-green">🎯</div>
+                <div class="card" onclick="showPage('page-leccion1')">
+                    <div class="card-icon ig">🎯</div>
                     <div class="card-content">
-                        <div class="card-tag tag-leccion">Lección 01</div>
+                        <div class="card-tag tag-l">Lección 01</div>
                         <div class="card-title">Actuación en Clase</div>
                         <div class="card-desc">Evaluación de participación y desempeño en sesiones presenciales</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
-
-                <a href="#" class="card">
-                    <div class="card-icon icon-yellow">📝</div>
+                </div>
+                <div class="card" onclick="showPage('page-leccion2')">
+                    <div class="card-icon iy">📝</div>
                     <div class="card-content">
-                        <div class="card-tag tag-leccion">Lección 02</div>
+                        <div class="card-tag tag-l">Lección 02</div>
                         <div class="card-title">Elaboración del Proyecto Integrador Teórico</div>
                         <div class="card-desc">Documentación y planificación del proyecto final</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
-
-                <a href="#" class="card">
-                    <div class="card-icon icon-cyan">🚀</div>
+                </div>
+                <div class="card" onclick="showPage('page-leccion3')">
+                    <div class="card-icon ic">🚀</div>
                     <div class="card-content">
-                        <div class="card-tag tag-leccion">Lección 03</div>
+                        <div class="card-tag tag-l">Lección 03</div>
                         <div class="card-title">Presentación del Proyecto Integrador</div>
                         <div class="card-desc">Exposición y defensa del proyecto final integrador</div>
                     </div>
                     <div class="card-arrow">→</div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- ========== POO PAGE ========== -->
+<div id="page-poo" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="poo-wrapper">
+        <div class="poo-header">
+            <h1>💻 Programación Orientada a Objetos</h1>
+            <p>Conceptos Básicos Explicados de Forma Simple</p>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">1</span>¿Qué es una CLASE?</h2>
+            <div class="definicion"><h3>📋 Definición:</h3><p>Una clase es como un <strong>molde o plantilla</strong> que define las características (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🍪</div><h4>Piensa en un molde de galletas</h4><p>El molde define la forma, pero no es la galleta en sí</p></div>
+            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">Persona</span> {
+    <span class="cmt">// Atributos (características)</span>
+    nombre: <span class="kw">string</span>;
+    edad: <span class="kw">number</span>;
+
+    <span class="kw">constructor</span>(nombre: <span class="kw">string</span>, edad: <span class="kw">number</span>) {
+        <span class="kw">this</span>.nombre = nombre;
+        <span class="kw">this</span>.edad = edad;
+    }
+
+    <span class="fn">saludar</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="str">"Hola, soy "</span> + <span class="kw">this</span>.nombre;
+    }
+}</div>
+            <ul class="caracteristicas"><li>Define la estructura de los objetos</li><li>Contiene atributos (datos) y métodos (funciones)</li><li>Es reutilizable para crear múltiples objetos</li></ul>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">2</span>¿Qué es un OBJETO?</h2>
+            <div class="definicion"><h3>📦 Definición:</h3><p>Un objeto es una <strong>instancia concreta</strong> de una clase. Es algo real y específico creado usando el molde (clase).</p></div>
+            <div class="ejemplo-visual"><div class="icono">👤</div><h4>De la clase Persona creamos objetos reales</h4><p>Juan (25 años) y María (30 años) son objetos diferentes de la misma clase</p></div>
+            <div class="ejemplo-codigo"><span class="kw">const</span> persona1 = <span class="kw">new</span> <span class="fn">Persona</span>(<span class="str">"Juan"</span>, 25);
+<span class="kw">const</span> persona2 = <span class="kw">new</span> <span class="fn">Persona</span>(<span class="str">"María"</span>, 30);
+
+persona1.<span class="fn">saludar</span>(); <span class="cmt">// "Hola, soy Juan"</span>
+persona2.<span class="fn">saludar</span>(); <span class="cmt">// "Hola, soy María"</span></div>
+            <div class="comparacion">
+                <div class="item-comp"><h4>CLASE</h4><p>Es abstracta (el molde). Define la estructura.</p></div>
+                <div class="item-comp"><h4>OBJETO</h4><p>Es concreto (la galleta). Tiene valores específicos.</p></div>
+            </div>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">3</span>¿Qué es la HERENCIA?</h2>
+            <div class="definicion"><h3>🧬 Definición:</h3><p>La herencia permite que una clase <strong>herede atributos y métodos</strong> de otra clase. La clase hija obtiene todo de la clase padre y puede agregar sus propias características.</p></div>
+            <div class="ejemplo-visual"><div class="icono">👨‍👦</div><h4>Como la herencia familiar</h4><p>Un hijo hereda características de sus padres, pero también tiene las suyas propias</p></div>
+            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">Estudiante</span> <span class="kw">extends</span> <span class="fn">Persona</span> {
+    carrera: <span class="kw">string</span>;
+
+    <span class="kw">constructor</span>(nombre: <span class="kw">string</span>, edad: <span class="kw">number</span>, carrera: <span class="kw">string</span>) {
+        <span class="kw">super</span>(nombre, edad);
+        <span class="kw">this</span>.carrera = carrera;
+    }
+
+    <span class="fn">estudiar</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="str">"Estudiando "</span> + <span class="kw">this</span>.carrera;
+    }
+}
+
+<span class="kw">const</span> estudiante = <span class="kw">new</span> <span class="fn">Estudiante</span>(<span class="str">"Carlos"</span>, 20, <span class="str">"Ingeniería"</span>);
+estudiante.<span class="fn">saludar</span>();  <span class="cmt">// Heredado de Persona</span>
+estudiante.<span class="fn">estudiar</span>(); <span class="cmt">// Propio de Estudiante</span></div>
+            <ul class="caracteristicas"><li>Permite reutilizar código</li><li>Crea relaciones "es un" (Estudiante ES UNA Persona)</li><li>La clase hija puede extender funcionalidad</li></ul>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">4</span>¿Qué es una CLASE ABSTRACTA?</h2>
+            <div class="definicion"><h3>🚫 Definición:</h3><p>Una clase abstracta es una clase que <strong>NO se puede instanciar</strong> directamente. Solo sirve como base para otras clases y define métodos que las clases hijas DEBEN implementar.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🐾</div><h4>Concepto de "Animal"</h4><p>No existe un "animal" genérico. Existen perros, gatos, etc.</p></div>
+            <div class="ejemplo-codigo"><span class="kw">abstract class</span> <span class="fn">Animal</span> {
+    nombre: <span class="kw">string</span>;
+    <span class="kw">constructor</span>(nombre: <span class="kw">string</span>) { <span class="kw">this</span>.nombre = nombre; }
+    <span class="kw">abstract</span> <span class="fn">hacerSonido</span>(): <span class="kw">string</span>;
+}
+
+<span class="kw">class</span> <span class="fn">Perro</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
+    <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Guau guau!"</span>; }
+}
+
+<span class="kw">class</span> <span class="fn">Gato</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
+    <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Miau miau!"</span>; }
+}</div>
+            <ul class="caracteristicas"><li>No se puede instanciar directamente</li><li>Define estructura común para clases hijas</li><li>Obliga a implementar ciertos métodos</li></ul>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">5</span>¿Qué es el POLIMORFISMO?</h2>
+            <div class="definicion"><h3>🎭 Definición:</h3><p>Polimorfismo significa <strong>"muchas formas"</strong>. Es la capacidad de diferentes clases de responder al mismo método de manera diferente.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🔊</div><h4>Mismo método, diferentes resultados</h4><p>Todos los animales "hacen sonido", pero cada uno lo hace diferente</p></div>
+            <div class="ejemplo-codigo"><span class="kw">const</span> animales: <span class="fn">Animal</span>[] = [
+    <span class="kw">new</span> <span class="fn">Perro</span>(<span class="str">"Firulais"</span>),
+    <span class="kw">new</span> <span class="fn">Gato</span>(<span class="str">"Michi"</span>)
+];
+
+animales.<span class="fn">forEach</span>(animal => {
+    console.<span class="fn">log</span>(animal.<span class="fn">hacerSonido</span>());
+});
+<span class="cmt">// ¡Guau guau!</span>
+<span class="cmt">// ¡Miau miau!</span></div>
+            <ul class="caracteristicas"><li>Mismo método, diferentes implementaciones</li><li>Permite código más flexible y extensible</li><li>Facilita agregar nuevos tipos sin cambiar código existente</li></ul>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">6</span>¿Qué es una INTERFACE?</h2>
+            <div class="definicion"><h3>📜 Definición:</h3><p>Una interface es un <strong>contrato</strong> que define QUÉ métodos debe tener una clase, pero no CÓMO implementarlos.</p></div>
+            <div class="ejemplo-visual"><div class="icono">✈️</div><h4>Contrato de "poder volar"</h4><p>Tanto un pájaro como un avión pueden volar, aunque son muy diferentes</p></div>
+            <div class="ejemplo-codigo"><span class="kw">interface</span> <span class="fn">Volador</span> {
+    <span class="fn">volar</span>(): <span class="kw">string</span>;
+    <span class="fn">aterrizar</span>(): <span class="kw">string</span>;
+}
+
+<span class="kw">class</span> <span class="fn">Pajaro</span> <span class="kw">implements</span> <span class="fn">Volador</span> {
+    <span class="fn">volar</span>() { <span class="kw">return</span> <span class="str">"Batiendo las alas"</span>; }
+    <span class="fn">aterrizar</span>() { <span class="kw">return</span> <span class="str">"Posándose en una rama"</span>; }
+}
+
+<span class="kw">class</span> <span class="fn">Avion</span> <span class="kw">implements</span> <span class="fn">Volador</span> {
+    <span class="fn">volar</span>() { <span class="kw">return</span> <span class="str">"Impulsado por motores"</span>; }
+    <span class="fn">aterrizar</span>() { <span class="kw">return</span> <span class="str">"Aterrizando en pista"</span>; }
+}</div>
+            <ul class="caracteristicas"><li>Define un contrato que las clases deben cumplir</li><li>Permite que clases diferentes compartan comportamientos</li><li>Una clase puede implementar múltiples interfaces</li></ul>
+        </div>
+
+        <div class="concepto">
+            <h2><span class="concepto-num">7</span>¿Qué es el ENCAPSULAMIENTO?</h2>
+            <div class="definicion"><h3>🔒 Definición:</h3><p>El encapsulamiento es <strong>proteger los datos</strong> internos de una clase y controlar cómo se accede a ellos mediante métodos públicos.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🏦</div><h4>Como una cuenta bancaria</h4><p>No puedes cambiar el saldo directamente, solo a través de operaciones controladas</p></div>
+            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">CuentaBancaria</span> {
+    <span class="kw">private</span> saldo: <span class="kw">number</span>;
+
+    <span class="kw">constructor</span>(saldoInicial: <span class="kw">number</span>) { <span class="kw">this</span>.saldo = saldoInicial; }
+
+    <span class="fn">getSaldo</span>(): <span class="kw">number</span> { <span class="kw">return</span> <span class="kw">this</span>.saldo; }
+
+    <span class="fn">depositar</span>(cantidad: <span class="kw">number</span>): <span class="kw">void</span> {
+        <span class="kw">if</span> (cantidad > 0) <span class="kw">this</span>.saldo += cantidad;
+    }
+
+    <span class="fn">retirar</span>(cantidad: <span class="kw">number</span>): <span class="kw">boolean</span> {
+        <span class="kw">if</span> (cantidad > 0 && cantidad <= <span class="kw">this</span>.saldo) {
+            <span class="kw">this</span>.saldo -= cantidad;
+            <span class="kw">return true</span>;
+        }
+        <span class="kw">return false</span>;
+    }
+}</div>
+            <div class="comparacion">
+                <div class="item-comp"><h4>🔓 public</h4><p>Accesible desde cualquier lugar</p></div>
+                <div class="item-comp"><h4>🔒 private</h4><p>Solo accesible dentro de la clase</p></div>
+                <div class="item-comp"><h4>🔐 protected</h4><p>Accesible en la clase y sus hijas</p></div>
+            </div>
+        </div>
+
+        <p class="video-label">🎬 Video Explicativo</p>
+        <p class="video-sub">Aprende más sobre POO con este video:</p>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+            <iframe src="https://drive.google.com/file/d/1kkBYVviQY-4yASGVgOl9DfWcTnGP6Aa9/preview"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- ========== DEBERES ========== -->
+<div id="page-deber1" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🌐</div>
+        <div class="soon-title">Deber 1: Consumo de una API</div>
+        <div class="soon-desc">Esta sección está lista para que agregues tu contenido sobre integración y consumo de servicios REST.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<div id="page-deber2" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🔐</div>
+        <div class="soon-title">Deber 2: Autenticación email/password y Google</div>
+        <div class="soon-desc">Esta sección está lista para que agregues tu contenido sobre Firebase Authentication.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<div id="page-deber3" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🔥</div>
+        <div class="soon-title">Deber 3: CRUD con Realtime Database</div>
+        <div class="soon-desc">Esta sección está lista para que agregues tu contenido sobre operaciones CRUD con Firebase.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<div id="page-deber4" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🗄️</div>
+        <div class="soon-title">Deber 4: CRUD utilizando Room</div>
+        <div class="soon-desc">Esta sección está lista para que agregues tu contenido sobre Room Database.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<!-- ========== LECCIONES ========== -->
+<div id="page-leccion1" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🎯</div>
+        <div class="soon-title">Lección 1: Actuación en Clase</div>
+        <div class="soon-desc">Esta sección está lista para que agregues la evaluación de participación y desempeño.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<div id="page-leccion2" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">📝</div>
+        <div class="soon-title">Lección 2: Elaboración del Proyecto Integrador Teórico</div>
+        <div class="soon-desc">Esta sección está lista para que agregues la documentación del proyecto.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<div id="page-leccion3" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="soon-wrapper">
+        <div class="soon-icon">🚀</div>
+        <div class="soon-title">Lección 3: Presentación del Proyecto Integrador</div>
+        <div class="soon-desc">Esta sección está lista para que agregues el contenido de la presentación final.</div>
+        <div class="soon-badge">Próximamente</div>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+</script>
+
 </body>
 </html>
