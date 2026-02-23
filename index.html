@@ -681,7 +681,7 @@ fetch(url)
   <span class="str">"id"</span>: 1,
   <span class="str">"name"</span>: <span class="str">"Leanne Graham"</span>,
   <span class="str">"username"</span>: <span class="str">"Bret"</span>,
-  <span class="str">"email"</span>: <span class="str">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fcaf95929f998e99bc9d8c8e9590d29e9586">[email&#160;protected]</a>"</span>,
+  <span class="str">"email"</span>: <span class="str">"Sincere@april.biz"</span>,
   <span class="str">"phone"</span>: <span class="str">"1-770-736-8031"</span>,
   <span class="str">"website"</span>: <span class="str">"hildegard.org"</span>,
   <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Gwenborough"</span>, ... },
@@ -1161,6 +1161,7 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
         <div class="soon-icon">🎯</div>
         <div class="soon-title">Lección 1: Actuación en Clase</div>
         <div class="soon-desc">Esta sección está lista para que el docente de la evaluación de participación y desempeño.</div>
+        
     </div>
 </div>
 
@@ -1184,7 +1185,7 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
     </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     let todosLosUsuarios = [];
 
     function showPage(pageId) {
@@ -1196,23 +1197,16 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
         }
     }
 
-    async function cargarUsuarios() {
-        // Datos reales de https://jsonplaceholder.typicode.com/users
-        const users = [
-            {"id":1,"name":"Leanne Graham","username":"Bret","email":"Sincere@april.biz","phone":"1-770-736-8031 x56442","website":"hildegard.org","address":{"city":"Gwenborough"},"company":{"name":"Romaguera-Crona"}},
-            {"id":2,"name":"Ervin Howell","username":"Antonette","email":"Shanna@melissa.tv","phone":"010-692-6593 x09125","website":"anastasia.net","address":{"city":"Wisokyburgh"},"company":{"name":"Deckow-Crist"}},
-            {"id":3,"name":"Clementine Bauch","username":"Samantha","email":"Nathan@yesenia.net","phone":"1-463-123-4447","website":"ramiro.info","address":{"city":"McKenziehaven"},"company":{"name":"Romaguera-Jacobson"}},
-            {"id":4,"name":"Patricia Lebsack","username":"Karianne","email":"Julianne.OConner@kory.org","phone":"493-170-9623 x156","website":"kale.biz","address":{"city":"South Elvis"},"company":{"name":"Robel-Corkery"}},
-            {"id":5,"name":"Chelsey Dietrich","username":"Kamren","email":"Lucio_Hettinger@annie.ca","phone":"(254)954-1289","website":"demarco.info","address":{"city":"Roscoeview"},"company":{"name":"Keebler LLC"}},
-            {"id":6,"name":"Mrs. Dennis Schulist","username":"Leopoldo_Corkery","email":"Karley_Dach@jasper.info","phone":"1-477-935-8478 x6430","website":"ola.org","address":{"city":"South Christy"},"company":{"name":"Considine-Lockman"}},
-            {"id":7,"name":"Kurtis Weissnat","username":"Elwyn.Skiles","email":"Telly.Hoeger@billy.biz","phone":"210.067.6132","website":"elvis.io","address":{"city":"Howemouth"},"company":{"name":"Johns Group"}},
-            {"id":8,"name":"Nicholas Runolfsdottir V","username":"Maxime_Nienow","email":"Sherwood@rosamond.me","phone":"586.493.6943 x140","website":"jacynthe.com","address":{"city":"Aliyaview"},"company":{"name":"Abernathy Group"}},
-            {"id":9,"name":"Glenna Reichert","username":"Delphine","email":"Chaim_McDermott@dana.io","phone":"(775)976-6794 x41206","website":"conrad.com","address":{"city":"Bartholomebury"},"company":{"name":"Yost and Sons"}},
-            {"id":10,"name":"Clementina DuBuque","username":"Moriah.Stanton","email":"Rey.Padberg@karina.biz","phone":"024-648-3804","website":"ambrose.net","address":{"city":"Lebsackbury"},"company":{"name":"Hoeger LLC"}}
-        ];
-        todosLosUsuarios = users;
-        document.getElementById('loading-api').style.display = 'none';
-        renderUsuarios(users);
+    async function cargarUsuarios() {op
+        try {
+            const res = await fetch('https://jsonplaceholder.typicode.com/users');
+            const users = await res.json();
+            todosLosUsuarios = users;
+            document.getElementById('loading-api').style.display = 'none';
+            renderUsuarios(users);
+        } catch (e) {
+            document.getElementById('loading-api').innerHTML = '<div style="font-size:2em;margin-bottom:12px;">❌</div><p>Error al cargar la API. Verifica tu conexión.</p>';
+        }
     }
 
     function renderUsuarios(users) {
@@ -1244,7 +1238,11 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
     }
 
     function filtrarUsuarios() {
-        const filtro = document.getElementById('search').value.toLowerCase();
-        const filtrados = todosLosUsuarios.filter(u =>  u.name.toLowerCase().includes(filtro) || u.username.toLowerCase().includes(filtro));    
+        const query = document.getElementById('buscador').value.toLowerCase();
+        const filtrados = todosLosUsuarios.filter(u => u.name.toLowerCase().includes(query));
         renderUsuarios(filtrados);
-    }   
+    }
+</script>
+
+</body>
+</html>
