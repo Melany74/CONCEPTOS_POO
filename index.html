@@ -16,16 +16,8 @@
             --text-muted: #7a7a9a;
             --border: rgba(91, 106, 240, 0.2);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Syne', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
+        body { font-family: 'Syne', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         body::before {
             content: '';
             position: fixed;
@@ -37,130 +29,32 @@
             pointer-events: none;
             z-index: 0;
         }
-
         .page { display: none; position: relative; z-index: 1; }
         .page.active { display: block; }
 
-        /* ====== HOME ====== */
-        .home-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-        }
-
+        /* HOME */
+        .home-wrapper { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
         .header { text-align: center; padding: 60px 0 50px; }
-
-        .header-badge {
-            display: inline-block;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75em;
-            letter-spacing: 0.2em;
-            color: var(--accent3);
-            border: 1px solid var(--accent3);
-            padding: 6px 16px;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-        }
-
-        .header h1 {
-            font-size: clamp(2em, 5vw, 3.6em);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        .header-badge { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.75em; letter-spacing: 0.2em; color: var(--accent3); border: 1px solid var(--accent3); padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; text-transform: uppercase; }
+        .header h1 { font-size: clamp(2em, 5vw, 3.6em); font-weight: 800; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #fff 30%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .header p { color: var(--text-muted); font-size: 1.1em; }
-
-        .stats-bar {
-            display: flex;
-            gap: 32px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 20px 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
+        .stats-bar { display: flex; gap: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 30px; margin-bottom: 40px; flex-wrap: wrap; }
         .stat { display: flex; flex-direction: column; gap: 4px; }
-
-        .stat-value {
-            font-size: 1.6em;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        .stat-value { font-size: 1.6em; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .stat-label { font-size: 0.75em; color: var(--text-muted); font-family: 'Space Mono', monospace; }
         .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
-
-        .section-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7em;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
-
+        .section-label { font-family: 'Space Mono', monospace; font-size: 0.7em; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
         .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
         .section { margin-bottom: 40px; }
-
         .cards-grid { display: grid; gap: 14px; }
         .cards-grid.two { grid-template-columns: repeat(2, 1fr); }
-
         @media (max-width: 600px) { .cards-grid.two { grid-template-columns: 1fr; } }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 26px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(91,106,240,0.08), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; cursor: pointer; display: flex; align-items: center; gap: 18px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(91,106,240,0.08), transparent 60%); opacity: 0; transition: opacity 0.3s; }
         .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(91,106,240,0.15); }
         .card:hover::before { opacity: 1; }
-
-        .card.featured {
-            background: linear-gradient(135deg, #141428, #1a1a35);
-            border-color: rgba(91,106,240,0.4);
-            padding: 32px;
-        }
-
-        .card-icon {
-            width: 50px; height: 50px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5em;
-            flex-shrink: 0;
-        }
-
+        .card.featured { background: linear-gradient(135deg, #141428, #1a1a35); border-color: rgba(91,106,240,0.4); padding: 32px; }
+        .card-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; flex-shrink: 0; }
         .ib { background: rgba(91,106,240,0.15); border: 1px solid rgba(91,106,240,0.3); }
         .ip { background: rgba(224,75,255,0.12); border: 1px solid rgba(224,75,255,0.25); }
         .it { background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.25); }
@@ -169,185 +63,60 @@
         .ig { background: rgba(80,220,100,0.1); border: 1px solid rgba(80,220,100,0.25); }
         .iy { background: rgba(255,220,50,0.1); border: 1px solid rgba(255,220,50,0.25); }
         .ic { background: rgba(50,200,255,0.1); border: 1px solid rgba(50,200,255,0.25); }
-
         .card-content { flex: 1; }
-
-        .card-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.63em;
-            letter-spacing: 0.1em;
-            padding: 3px 10px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            display: inline-block;
-        }
-
+        .card-tag { font-family: 'Space Mono', monospace; font-size: 0.63em; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
         .tag-poo { background: rgba(91,106,240,0.15); color: #8b98ff; border: 1px solid rgba(91,106,240,0.3); }
         .tag-d { background: rgba(224,75,255,0.12); color: #e87fff; border: 1px solid rgba(224,75,255,0.25); }
         .tag-l { background: rgba(0,229,192,0.1); color: #5fffde; border: 1px solid rgba(0,229,192,0.25); }
-
         .card-title { font-size: 1.05em; font-weight: 700; margin-bottom: 4px; }
         .card.featured .card-title { font-size: 1.3em; }
         .card-desc { font-size: 0.82em; color: var(--text-muted); font-weight: 400; }
         .card-arrow { font-size: 1.2em; color: var(--text-muted); transition: all 0.3s; flex-shrink: 0; }
         .card:hover .card-arrow { color: var(--accent); transform: translateX(4px); }
 
-        /* ====== BACK BUTTON ====== */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(91,106,240,0.15);
-            color: var(--accent);
-            border: 1px solid rgba(91,106,240,0.3);
-            padding: 10px 20px;
-            border-radius: 100px;
-            font-family: 'Syne', sans-serif;
-            font-weight: 600;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 24px 24px 0;
-        }
-
+        /* BACK BUTTON */
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(91,106,240,0.15); color: var(--accent); border: 1px solid rgba(91,106,240,0.3); padding: 10px 20px; border-radius: 100px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.9em; cursor: pointer; transition: all 0.3s; margin: 24px 24px 0; }
         .back-btn:hover { background: rgba(91,106,240,0.25); transform: translateX(-3px); }
 
-        /* ====== POO PAGE ====== */
-        .poo-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 24px 80px;
-        }
-
-        .poo-header {
-            background: linear-gradient(135deg, #141428, #1a1a35);
-            border: 1px solid rgba(91,106,240,0.3);
-            padding: 40px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
+        /* INNER PAGES */
+        .poo-wrapper { max-width: 1100px; margin: 0 auto; padding: 20px 24px 80px; }
+        .poo-header { background: linear-gradient(135deg, #141428, #1a1a35); border: 1px solid rgba(91,106,240,0.3); padding: 40px; border-radius: 16px; text-align: center; margin-bottom: 28px; }
         .poo-header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
         .poo-header p { color: var(--text-muted); }
-
-        .concepto {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
+        .concepto { background: var(--surface); border: 1px solid var(--border); padding: 30px; border-radius: 16px; margin-bottom: 20px; transition: transform 0.3s, border-color 0.3s; }
         .concepto:hover { transform: translateY(-3px); border-color: var(--accent); }
-
-        .concepto h2 {
-            font-size: 1.6em;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--accent);
-            padding-left: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .concepto-num {
-            background: var(--accent);
-            color: white;
-            width: 34px; height: 34px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75em;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .definicion {
-            background: rgba(91,106,240,0.08);
-            border: 1px solid rgba(91,106,240,0.2);
-            padding: 18px 20px;
-            border-radius: 10px;
-            margin: 14px 0;
-        }
-
+        .concepto h2 { font-size: 1.6em; margin-bottom: 16px; border-left: 4px solid var(--accent); padding-left: 14px; display: flex; align-items: center; gap: 12px; }
+        .concepto-num { background: var(--accent); color: white; width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75em; font-weight: 700; flex-shrink: 0; }
+        .definicion { background: rgba(91,106,240,0.08); border: 1px solid rgba(91,106,240,0.2); padding: 18px 20px; border-radius: 10px; margin: 14px 0; }
         .definicion h3 { color: #8b98ff; margin-bottom: 8px; font-size: 0.95em; }
         .definicion p { color: var(--text); line-height: 1.7; }
-
-        .ejemplo-visual {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 22px;
-            border-radius: 10px;
-            margin: 14px 0;
-            text-align: center;
-        }
-
+        .ejemplo-visual { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 22px; border-radius: 10px; margin: 14px 0; text-align: center; }
         .ejemplo-visual .icono { font-size: 2.5em; margin-bottom: 8px; }
         .ejemplo-visual h4 { margin-bottom: 6px; font-size: 1.1em; }
         .ejemplo-visual p { font-size: 0.9em; opacity: 0.85; }
-
-        .ejemplo-codigo {
-            background: #0d0d14;
-            border: 1px solid rgba(91,106,240,0.2);
-            color: #d4d4d4;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 14px 0;
-            overflow-x: auto;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85em;
-            line-height: 1.7;
-        }
-
+        .ejemplo-codigo { background: #0d0d14; border: 1px solid rgba(91,106,240,0.2); color: #d4d4d4; padding: 20px; border-radius: 10px; margin: 14px 0; overflow-x: auto; font-family: 'Space Mono', monospace; font-size: 0.85em; line-height: 1.7; }
         .kw { color: #569cd6; }
         .str { color: #ce9178; }
         .cmt { color: #6a9955; }
         .fn { color: #dcdcaa; }
-
         .caracteristicas { list-style: none; padding: 0; margin-top: 14px; }
         .caracteristicas li { padding: 8px 0 8px 28px; position: relative; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.95em; }
         .caracteristicas li:before { content: "✓"; position: absolute; left: 0; color: var(--accent3); font-weight: bold; }
-
         .comparacion { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 14px 0; }
         .item-comp { background: rgba(91,106,240,0.07); border: 1px solid rgba(91,106,240,0.2); padding: 18px; border-radius: 10px; }
         .item-comp h4 { color: #8b98ff; margin-bottom: 8px; }
         .item-comp p { color: var(--text-muted); font-size: 0.88em; }
-
         .video-label { color: var(--text); font-size: 1.3em; font-weight: 700; margin: 30px 0 6px; }
         .video-sub { color: var(--text-muted); margin-bottom: 14px; font-size: 0.9em; }
 
-        /* ====== COMING SOON ====== */
-        .soon-wrapper {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 80px 24px;
-            text-align: center;
-        }
-
+        /* COMING SOON */
+        .soon-wrapper { max-width: 700px; margin: 0 auto; padding: 80px 24px; text-align: center; }
         .soon-icon { font-size: 4em; margin-bottom: 20px; }
         .soon-title { font-size: 1.8em; font-weight: 800; margin-bottom: 14px; }
         .soon-desc { color: var(--text-muted); font-size: 1em; line-height: 1.8; }
-        .soon-badge {
-            display: inline-block;
-            margin-top: 24px;
-            background: rgba(91,106,240,0.15);
-            border: 1px solid rgba(91,106,240,0.3);
-            color: #8b98ff;
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8em;
-        }
+        .soon-badge { display: inline-block; margin-top: 24px; background: rgba(91,106,240,0.15); border: 1px solid rgba(91,106,240,0.3); color: #8b98ff; padding: 8px 20px; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 0.8em; }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .page.active > * { animation: fadeUp 0.4s ease both; }
     </style>
 </head>
@@ -361,7 +130,6 @@
             <h1>Desarrollo de<br>Aplicaciones Móviles</h1>
             <p>Selecciona un tema para comenzar</p>
         </div>
-
         <div class="stats-bar">
             <div class="stat"><span class="stat-value"></span><span class="stat-label">Tema Principal</span></div>
             <div class="stat-divider"></div>
@@ -371,7 +139,6 @@
             <div class="stat-divider"></div>
             <div class="stat"><span class="stat-value"></span><span class="stat-label">Total Secciones</span></div>
         </div>
-
         <div class="section">
             <div class="section-label">Contenido Principal</div>
             <div class="cards-grid">
@@ -386,7 +153,6 @@
                 </div>
             </div>
         </div>
-
         <div class="section">
             <div class="section-label">Deberes</div>
             <div class="cards-grid two">
@@ -428,7 +194,6 @@
                 </div>
             </div>
         </div>
-
         <div class="section">
             <div class="section-label">Lecciones</div>
             <div class="cards-grid">
@@ -464,7 +229,7 @@
     </div>
 </div>
 
-<!-- ========== POO PAGE ========== -->
+<!-- ========== POO ========== -->
 <div id="page-poo" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="poo-wrapper">
@@ -472,35 +237,29 @@
             <h1>💻 Programación Orientada a Objetos</h1>
             <p>Conceptos Básicos Explicados de Forma Simple</p>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">1</span>¿Qué es una CLASE?</h2>
             <div class="definicion"><h3>📋 Definición:</h3><p>Una clase es como un <strong>molde o plantilla</strong> que define las características (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella.</p></div>
             <div class="ejemplo-visual"><div class="icono">🍪</div><h4>Piensa en un molde de galletas</h4><p>El molde define la forma, pero no es la galleta en sí</p></div>
             <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">Persona</span> {
-    <span class="cmt">// Atributos (características)</span>
     nombre: <span class="kw">string</span>;
     edad: <span class="kw">number</span>;
-
     <span class="kw">constructor</span>(nombre: <span class="kw">string</span>, edad: <span class="kw">number</span>) {
         <span class="kw">this</span>.nombre = nombre;
         <span class="kw">this</span>.edad = edad;
     }
-
     <span class="fn">saludar</span>(): <span class="kw">string</span> {
         <span class="kw">return</span> <span class="str">"Hola, soy "</span> + <span class="kw">this</span>.nombre;
     }
 }</div>
             <ul class="caracteristicas"><li>Define la estructura de los objetos</li><li>Contiene atributos (datos) y métodos (funciones)</li><li>Es reutilizable para crear múltiples objetos</li></ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">2</span>¿Qué es un OBJETO?</h2>
             <div class="definicion"><h3>📦 Definición:</h3><p>Un objeto es una <strong>instancia concreta</strong> de una clase. Es algo real y específico creado usando el molde (clase).</p></div>
             <div class="ejemplo-visual"><div class="icono">👤</div><h4>De la clase Persona creamos objetos reales</h4><p>Juan (25 años) y María (30 años) son objetos diferentes de la misma clase</p></div>
             <div class="ejemplo-codigo"><span class="kw">const</span> persona1 = <span class="kw">new</span> <span class="fn">Persona</span>(<span class="str">"Juan"</span>, 25);
 <span class="kw">const</span> persona2 = <span class="kw">new</span> <span class="fn">Persona</span>(<span class="str">"María"</span>, 30);
-
 persona1.<span class="fn">saludar</span>(); <span class="cmt">// "Hola, soy Juan"</span>
 persona2.<span class="fn">saludar</span>(); <span class="cmt">// "Hola, soy María"</span></div>
             <div class="comparacion">
@@ -508,67 +267,42 @@ persona2.<span class="fn">saludar</span>(); <span class="cmt">// "Hola, soy Mar�
                 <div class="item-comp"><h4>OBJETO</h4><p>Es concreto (la galleta). Tiene valores específicos.</p></div>
             </div>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">3</span>¿Qué es la HERENCIA?</h2>
             <div class="definicion"><h3>🧬 Definición:</h3><p>La herencia permite que una clase <strong>herede atributos y métodos</strong> de otra clase. La clase hija obtiene todo de la clase padre y puede agregar sus propias características.</p></div>
             <div class="ejemplo-visual"><div class="icono">👨‍👦</div><h4>Como la herencia familiar</h4><p>Un hijo hereda características de sus padres, pero también tiene las suyas propias</p></div>
             <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">Estudiante</span> <span class="kw">extends</span> <span class="fn">Persona</span> {
     carrera: <span class="kw">string</span>;
-
     <span class="kw">constructor</span>(nombre: <span class="kw">string</span>, edad: <span class="kw">number</span>, carrera: <span class="kw">string</span>) {
         <span class="kw">super</span>(nombre, edad);
         <span class="kw">this</span>.carrera = carrera;
     }
-
-    <span class="fn">estudiar</span>(): <span class="kw">string</span> {
-        <span class="kw">return</span> <span class="str">"Estudiando "</span> + <span class="kw">this</span>.carrera;
-    }
-}
-
-<span class="kw">const</span> estudiante = <span class="kw">new</span> <span class="fn">Estudiante</span>(<span class="str">"Carlos"</span>, 20, <span class="str">"Ingeniería"</span>);
-estudiante.<span class="fn">saludar</span>();  <span class="cmt">// Heredado de Persona</span>
-estudiante.<span class="fn">estudiar</span>(); <span class="cmt">// Propio de Estudiante</span></div>
+    <span class="fn">estudiar</span>(): <span class="kw">string</span> { <span class="kw">return</span> <span class="str">"Estudiando "</span> + <span class="kw">this</span>.carrera; }
+}</div>
             <ul class="caracteristicas"><li>Permite reutilizar código</li><li>Crea relaciones "es un" (Estudiante ES UNA Persona)</li><li>La clase hija puede extender funcionalidad</li></ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">4</span>¿Qué es una CLASE ABSTRACTA?</h2>
-            <div class="definicion"><h3>🚫 Definición:</h3><p>Una clase abstracta es una clase que <strong>NO se puede instanciar</strong> directamente. Solo sirve como base para otras clases y define métodos que las clases hijas DEBEN implementar.</p></div>
+            <div class="definicion"><h3>🚫 Definición:</h3><p>Una clase abstracta <strong>NO se puede instanciar</strong> directamente. Solo sirve como base para otras clases.</p></div>
             <div class="ejemplo-visual"><div class="icono">🐾</div><h4>Concepto de "Animal"</h4><p>No existe un "animal" genérico. Existen perros, gatos, etc.</p></div>
             <div class="ejemplo-codigo"><span class="kw">abstract class</span> <span class="fn">Animal</span> {
     nombre: <span class="kw">string</span>;
     <span class="kw">constructor</span>(nombre: <span class="kw">string</span>) { <span class="kw">this</span>.nombre = nombre; }
     <span class="kw">abstract</span> <span class="fn">hacerSonido</span>(): <span class="kw">string</span>;
 }
-
-<span class="kw">class</span> <span class="fn">Perro</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
-    <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Guau guau!"</span>; }
-}
-
-<span class="kw">class</span> <span class="fn">Gato</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
-    <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Miau miau!"</span>; }
-}</div>
+<span class="kw">class</span> <span class="fn">Perro</span> <span class="kw">extends</span> <span class="fn">Animal</span> { <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Guau!"</span>; } }
+<span class="kw">class</span> <span class="fn">Gato</span> <span class="kw">extends</span> <span class="fn">Animal</span> { <span class="fn">hacerSonido</span>() { <span class="kw">return</span> <span class="str">"¡Miau!"</span>; } }</div>
             <ul class="caracteristicas"><li>No se puede instanciar directamente</li><li>Define estructura común para clases hijas</li><li>Obliga a implementar ciertos métodos</li></ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">5</span>¿Qué es el POLIMORFISMO?</h2>
             <div class="definicion"><h3>🎭 Definición:</h3><p>Polimorfismo significa <strong>"muchas formas"</strong>. Es la capacidad de diferentes clases de responder al mismo método de manera diferente.</p></div>
             <div class="ejemplo-visual"><div class="icono">🔊</div><h4>Mismo método, diferentes resultados</h4><p>Todos los animales "hacen sonido", pero cada uno lo hace diferente</p></div>
-            <div class="ejemplo-codigo"><span class="kw">const</span> animales: <span class="fn">Animal</span>[] = [
-    <span class="kw">new</span> <span class="fn">Perro</span>(<span class="str">"Firulais"</span>),
-    <span class="kw">new</span> <span class="fn">Gato</span>(<span class="str">"Michi"</span>)
-];
-
-animales.<span class="fn">forEach</span>(animal => {
-    console.<span class="fn">log</span>(animal.<span class="fn">hacerSonido</span>());
-});
-<span class="cmt">// ¡Guau guau!</span>
-<span class="cmt">// ¡Miau miau!</span></div>
+            <div class="ejemplo-codigo"><span class="kw">const</span> animales: <span class="fn">Animal</span>[] = [<span class="kw">new</span> <span class="fn">Perro</span>(<span class="str">"Firulais"</span>), <span class="kw">new</span> <span class="fn">Gato</span>(<span class="str">"Michi"</span>)];
+animales.<span class="fn">forEach</span>(a => console.<span class="fn">log</span>(a.<span class="fn">hacerSonido</span>()));
+<span class="cmt">// ¡Guau!  /  ¡Miau!</span></div>
             <ul class="caracteristicas"><li>Mismo método, diferentes implementaciones</li><li>Permite código más flexible y extensible</li><li>Facilita agregar nuevos tipos sin cambiar código existente</li></ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">6</span>¿Qué es una INTERFACE?</h2>
             <div class="definicion"><h3>📜 Definición:</h3><p>Una interface es un <strong>contrato</strong> que define QUÉ métodos debe tener una clase, pero no CÓMO implementarlos.</p></div>
@@ -577,41 +311,22 @@ animales.<span class="fn">forEach</span>(animal => {
     <span class="fn">volar</span>(): <span class="kw">string</span>;
     <span class="fn">aterrizar</span>(): <span class="kw">string</span>;
 }
-
 <span class="kw">class</span> <span class="fn">Pajaro</span> <span class="kw">implements</span> <span class="fn">Volador</span> {
     <span class="fn">volar</span>() { <span class="kw">return</span> <span class="str">"Batiendo las alas"</span>; }
     <span class="fn">aterrizar</span>() { <span class="kw">return</span> <span class="str">"Posándose en una rama"</span>; }
-}
-
-<span class="kw">class</span> <span class="fn">Avion</span> <span class="kw">implements</span> <span class="fn">Volador</span> {
-    <span class="fn">volar</span>() { <span class="kw">return</span> <span class="str">"Impulsado por motores"</span>; }
-    <span class="fn">aterrizar</span>() { <span class="kw">return</span> <span class="str">"Aterrizando en pista"</span>; }
 }</div>
             <ul class="caracteristicas"><li>Define un contrato que las clases deben cumplir</li><li>Permite que clases diferentes compartan comportamientos</li><li>Una clase puede implementar múltiples interfaces</li></ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">7</span>¿Qué es el ENCAPSULAMIENTO?</h2>
             <div class="definicion"><h3>🔒 Definición:</h3><p>El encapsulamiento es <strong>proteger los datos</strong> internos de una clase y controlar cómo se accede a ellos mediante métodos públicos.</p></div>
             <div class="ejemplo-visual"><div class="icono">🏦</div><h4>Como una cuenta bancaria</h4><p>No puedes cambiar el saldo directamente, solo a través de operaciones controladas</p></div>
             <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">CuentaBancaria</span> {
     <span class="kw">private</span> saldo: <span class="kw">number</span>;
-
-    <span class="kw">constructor</span>(saldoInicial: <span class="kw">number</span>) { <span class="kw">this</span>.saldo = saldoInicial; }
-
-    <span class="fn">getSaldo</span>(): <span class="kw">number</span> { <span class="kw">return</span> <span class="kw">this</span>.saldo; }
-
-    <span class="fn">depositar</span>(cantidad: <span class="kw">number</span>): <span class="kw">void</span> {
-        <span class="kw">if</span> (cantidad > 0) <span class="kw">this</span>.saldo += cantidad;
-    }
-
-    <span class="fn">retirar</span>(cantidad: <span class="kw">number</span>): <span class="kw">boolean</span> {
-        <span class="kw">if</span> (cantidad > 0 && cantidad <= <span class="kw">this</span>.saldo) {
-            <span class="kw">this</span>.saldo -= cantidad;
-            <span class="kw">return true</span>;
-        }
-        <span class="kw">return false</span>;
-    }
+    <span class="kw">constructor</span>(s: <span class="kw">number</span>) { <span class="kw">this</span>.saldo = s; }
+    <span class="fn">getSaldo</span>() { <span class="kw">return</span> <span class="kw">this</span>.saldo; }
+    <span class="fn">depositar</span>(n: <span class="kw">number</span>) { <span class="kw">if</span> (n > 0) <span class="kw">this</span>.saldo += n; }
+    <span class="fn">retirar</span>(n: <span class="kw">number</span>) { <span class="kw">if</span> (n > 0 && n <= <span class="kw">this</span>.saldo) { <span class="kw">this</span>.saldo -= n; <span class="kw">return true</span>; } <span class="kw">return false</span>; }
 }</div>
             <div class="comparacion">
                 <div class="item-comp"><h4>🔓 public</h4><p>Accesible desde cualquier lugar</p></div>
@@ -619,102 +334,65 @@ animales.<span class="fn">forEach</span>(animal => {
                 <div class="item-comp"><h4>🔐 protected</h4><p>Accesible en la clase y sus hijas</p></div>
             </div>
         </div>
-
         <p class="video-label">🎬 Video Explicativo</p>
         <p class="video-sub">Aprende más sobre POO con este video:</p>
         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-            <iframe src="https://drive.google.com/file/d/1kkBYVviQY-4yASGVgOl9DfWcTnGP6Aa9/preview"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://drive.google.com/file/d/1kkBYVviQY-4yASGVgOl9DfWcTnGP6Aa9/preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
 </div>
 
-<!-- ========== DEBERES ========== -->
+<!-- ========== DEBER 1 ========== -->
 <div id="page-deber1" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="poo-wrapper">
         <div class="poo-header">
-            <h1> Deber 1: Consumo de una API</h1>
+            <h1>🌐 Deber 1: Consumo de una API</h1>
             <p>Consumo de la API de usuarios — jsonplaceholder.typicode.com</p>
         </div>
-
-        <!-- Explicación -->
         <div class="concepto">
             <h2><span class="concepto-num">📖</span>¿Qué es una API?</h2>
-            <div class="definicion">
-                <h3>📋 Definición:</h3>
-                <p>Una <strong>API (Application Programming Interface)</strong> es una interfaz que permite que dos aplicaciones se comuniquen entre sí. En desarrollo móvil y web, usamos APIs para obtener datos de un servidor externo mediante peticiones HTTP.</p>
-            </div>
-            <div class="ejemplo-visual">
-                <div class="icono">🔄</div>
-                <h4>Flujo de consumo de una API</h4>
-                <p>App → Petición HTTP (GET) → Servidor API → Respuesta JSON → App muestra los datos</p>
-            </div>
+            <div class="definicion"><h3>📋 Definición:</h3><p>Una <strong>API (Application Programming Interface)</strong> es una interfaz que permite que dos aplicaciones se comuniquen entre sí. Usamos APIs para obtener datos de un servidor externo mediante peticiones HTTP.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🔄</div><h4>Flujo de consumo de una API</h4><p>App → Petición HTTP (GET) → Servidor API → Respuesta JSON → App muestra los datos</p></div>
             <div class="ejemplo-codigo"><span class="cmt">// Consumo de API con fetch() en JavaScript</span>
 <span class="kw">const</span> url = <span class="str">"https://jsonplaceholder.typicode.com/users"</span>;
-
 fetch(url)
   .<span class="fn">then</span>(response => response.<span class="fn">json</span>())
-  .<span class="fn">then</span>(data => {
-    console.<span class="fn">log</span>(data); <span class="cmt">// Array de usuarios</span>
-  })
-  .<span class="fn">catch</span>(error => {
-    console.<span class="fn">log</span>(<span class="str">"Error:"</span>, error);
-  });</div>
+  .<span class="fn">then</span>(data => console.<span class="fn">log</span>(data))
+  .<span class="fn">catch</span>(error => console.<span class="fn">log</span>(<span class="str">"Error:"</span>, error));</div>
             <ul class="caracteristicas">
                 <li>Se usa el método <strong>GET</strong> para obtener datos</li>
                 <li>La respuesta llega en formato <strong>JSON</strong></li>
                 <li>Se maneja con <strong>.then()</strong> o <strong>async/await</strong></li>
             </ul>
         </div>
-
-        <!-- API URL info -->
         <div class="concepto">
             <h2><span class="concepto-num">🔗</span>API Utilizada</h2>
-            <div class="definicion">
-                <h3>🌐 Endpoint:</h3>
-                <p style="font-family:'Space Mono',monospace; color:#00e5c0; font-size:0.95em; margin-top:8px;">https://jsonplaceholder.typicode.com/users</p>
-            </div>
-            <div class="ejemplo-codigo"><span class="cmt">// Estructura de cada usuario en la respuesta JSON</span>
-{
+            <div class="definicion"><h3>🌐 Endpoint:</h3><p style="font-family:'Space Mono',monospace;color:#00e5c0;font-size:0.95em;margin-top:8px;">https://jsonplaceholder.typicode.com/users</p></div>
+            <div class="ejemplo-codigo">{
   <span class="str">"id"</span>: 1,
-  <span class="str">"name"</span>: <span class="str">"Leanne Graham"</span>,
-  <span class="str">"username"</span>: <span class="str">"Bret"</span>,
-  <span class="str">"email"</span>: <span class="str">"Sincere@april.biz"</span>,
+  <span class="str">"name"</span>: <span class="str">"Damon Salvatore"</span>,
+  <span class="str">"username"</span>: <span class="str">"DamoonSalv"</span>,
+  <span class="str">"email"</span>: <span class="str">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cb98a2a5a8aeb9ae8baabbb9a2a7e5a9a2b1">[email&#160;protected]</a>"</span>,
   <span class="str">"phone"</span>: <span class="str">"1-770-736-8031"</span>,
   <span class="str">"website"</span>: <span class="str">"hildegard.org"</span>,
-  <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Gwenborough"</span>, ... },
-  <span class="str">"company"</span>: { <span class="str">"name"</span>: <span class="str">"Romaguera-Crona"</span>, ... }
+  <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Covington"</span> },
+  <span class="str">"company"</span>: { <span class="str">"name"</span>: <span class="str">"Estados Unidos"</span> }
 }</div>
         </div>
-
-        <!-- Resultado en vivo -->
         <div class="concepto">
             <h2><span class="concepto-num">⚡</span>Resultado en Vivo</h2>
-            <div class="definicion">
-                <h3>📡 Datos obtenidos de la API:</h3>
-                <p>Los siguientes usuarios fueron cargados haciendo un <strong>fetch()</strong> al endpoint en tiempo real.</p>
+            <div class="definicion"><h3>📡 Datos obtenidos de la API:</h3><p>Los 10 usuarios cargados desde el endpoint de JSONPlaceholder.</p></div>
+            <div style="margin:16px 0;display:flex;gap:12px;align-items:center;">
+                <input id="buscador" type="text" placeholder="🔍 Buscar usuario por nombre..." oninput="filtrarUsuarios()" style="flex:1;background:#0d0d14;border:1px solid rgba(91,106,240,0.3);color:#e8e8f0;padding:12px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-size:0.95em;outline:none;">
+                <div id="contador" style="font-family:'Space Mono',monospace;font-size:0.75em;color:#7a7a9a;white-space:nowrap;"></div>
             </div>
-
-            <!-- Buscador -->
-            <div style="margin: 16px 0; display:flex; gap:12px; align-items:center;">
-                <input id="buscador" type="text" placeholder="🔍 Buscar usuario por nombre..." oninput="filtrarUsuarios()" style="flex:1; background:#0d0d14; border:1px solid rgba(91,106,240,0.3); color:#e8e8f0; padding:12px 16px; border-radius:10px; font-family:'Syne',sans-serif; font-size:0.95em; outline:none;">
-                <div id="contador" style="font-family:'Space Mono',monospace; font-size:0.75em; color:#7a7a9a; white-space:nowrap;"></div>
-            </div>
-
-            <!-- Loading -->
-            <div id="loading-api" style="text-align:center; padding:40px; color:#7a7a9a;">
-                <div style="font-size:2em; margin-bottom:12px;">⏳</div>
-                <p>Cargando usuarios desde la API...</p>
-            </div>
-
-            <!-- Grid de usuarios -->
-            <div id="users-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; margin-top:4px;"></div>
+            <div id="users-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;"></div>
         </div>
     </div>
 </div>
 
+<!-- ========== DEBER 2 ========== -->
 <div id="page-deber2" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="poo-wrapper">
@@ -722,18 +400,10 @@ fetch(url)
             <h1>🔐 Deber 2: Autenticación</h1>
             <p>Email/Password y Google Sign-In con Firebase Authentication — Kotlin (Android)</p>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">📖</span>¿Qué es Firebase Authentication?</h2>
-            <div class="definicion">
-                <h3>📋 Definición:</h3>
-                <p><strong>Firebase Authentication</strong> es un servicio de Google que permite autenticar usuarios de forma segura usando distintos proveedores: correo/contraseña, Google, Facebook, etc. Maneja todo el backend de seguridad automáticamente.</p>
-            </div>
-            <div class="ejemplo-visual">
-                <div class="icono">🔄</div>
-                <h4>Flujo de Autenticación</h4>
-                <p>Usuario ingresa credenciales → Firebase verifica → Retorna token de sesión → App permite acceso</p>
-            </div>
+            <div class="definicion"><h3>📋 Definición:</h3><p><strong>Firebase Authentication</strong> es un servicio de Google que permite autenticar usuarios de forma segura usando distintos proveedores: correo/contraseña, Google, Facebook, etc.</p></div>
+            <div class="ejemplo-visual"><div class="icono">🔄</div><h4>Flujo de Autenticación</h4><p>Usuario ingresa credenciales → Firebase verifica → Retorna token de sesión → App permite acceso</p></div>
             <ul class="caracteristicas">
                 <li>No necesitas manejar contraseñas manualmente</li>
                 <li>Firebase cifra y protege los datos de los usuarios</li>
@@ -741,248 +411,107 @@ fetch(url)
                 <li>Provee un objeto <strong>FirebaseUser</strong> con los datos del usuario activo</li>
             </ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">⚙️</span>Configuración en build.gradle</h2>
-            <div class="definicion"><h3>📦 Dependencias necesarias:</h3><p>Agrega estas dependencias en tu archivo <strong>build.gradle (app)</strong> para habilitar Firebase Auth y Google Sign-In.</p></div>
             <div class="ejemplo-codigo"><span class="cmt">// build.gradle (app)</span>
-<span class="fn">dependencies</span> {
-    <span class="cmt">// Firebase Authentication</span>
-    implementation(<span class="str">"com.google.firebase:firebase-auth-ktx"</span>)
-
-    <span class="cmt">// Google Sign-In</span>
-    implementation(<span class="str">"com.google.android.gms:play-services-auth:20.7.0"</span>)
-}</div>
+implementation(<span class="str">"com.google.firebase:firebase-auth-ktx"</span>)
+implementation(<span class="str">"com.google.android.gms:play-services-auth:20.7.0"</span>)</div>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">📧</span>Autenticación con Email/Password</h2>
-            <div class="definicion"><h3>📋 Registro e inicio de sesión:</h3><p>Firebase permite crear cuentas y autenticar usuarios con correo electrónico y contraseña con solo unas pocas líneas de Kotlin.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">AuthActivity</span> : AppCompatActivity() {
+            <div class="ejemplo-codigo"><span class="kw">private val</span> auth = FirebaseAuth.<span class="fn">getInstance</span>()
 
-    <span class="kw">private val</span> auth = FirebaseAuth.<span class="fn">getInstance</span>()
+<span class="cmt">// REGISTRO</span>
+<span class="kw">fun</span> <span class="fn">registrar</span>(email: <span class="kw">String</span>, password: <span class="kw">String</span>) {
+    auth.<span class="fn">createUserWithEmailAndPassword</span>(email, password)
+        .<span class="fn">addOnCompleteListener</span> { task ->
+            <span class="kw">if</span> (task.isSuccessful) Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Registro exitoso"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
+        }
+}
 
-    <span class="cmt">// REGISTRO de nuevo usuario</span>
-    <span class="kw">fun</span> <span class="fn">registrarUsuario</span>(email: <span class="kw">String</span>, password: <span class="kw">String</span>) {
-        auth.<span class="fn">createUserWithEmailAndPassword</span>(email, password)
-            .<span class="fn">addOnCompleteListener</span> { task ->
-                <span class="kw">if</span> (task.isSuccessful) {
-                    <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Registro exitoso"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-                } <span class="kw">else</span> {
-                    <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Error: ${task.exception?.message}"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-                }
-            }
-    }
+<span class="cmt">// INICIO DE SESIÓN</span>
+<span class="kw">fun</span> <span class="fn">iniciarSesion</span>(email: <span class="kw">String</span>, password: <span class="kw">String</span>) {
+    auth.<span class="fn">signInWithEmailAndPassword</span>(email, password)
+        .<span class="fn">addOnCompleteListener</span> { task ->
+            <span class="kw">if</span> (task.isSuccessful) Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Bienvenido ${auth.currentUser?.email}"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
+        }
+}
 
-    <span class="cmt">// INICIO DE SESIÓN con email y password</span>
-    <span class="kw">fun</span> <span class="fn">iniciarSesion</span>(email: <span class="kw">String</span>, password: <span class="kw">String</span>) {
-        auth.<span class="fn">signInWithEmailAndPassword</span>(email, password)
-            .<span class="fn">addOnCompleteListener</span> { task ->
-                <span class="kw">if</span> (task.isSuccessful) {
-                    <span class="kw">val</span> user = auth.currentUser
-                    <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Bienvenido ${user?.email}"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-                } <span class="kw">else</span> {
-                    <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Credenciales incorrectas"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-                }
-            }
-    }
-
-    <span class="cmt">// CERRAR SESIÓN</span>
-    <span class="kw">fun</span> <span class="fn">cerrarSesion</span>() {
-        auth.<span class="fn">signOut</span>()
-    }
-}</div>
+<span class="cmt">// CERRAR SESIÓN</span>
+<span class="kw">fun</span> <span class="fn">cerrarSesion</span>() { auth.<span class="fn">signOut</span>() }</div>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">🔵</span>Autenticación con Google</h2>
-            <div class="definicion"><h3>📋 Google Sign-In:</h3><p>Permite al usuario iniciar sesión con su cuenta de Google. Se usa <strong>GoogleSignInClient</strong> para abrir el selector de cuenta y luego Firebase valida el token.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">GoogleAuthActivity</span> : AppCompatActivity() {
+            <div class="ejemplo-codigo"><span class="kw">val</span> gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    .<span class="fn">requestIdToken</span>(<span class="fn">getString</span>(R.string.default_web_client_id))
+    .<span class="fn">requestEmail</span>().<span class="fn">build</span>()
 
-    <span class="kw">private val</span> auth = FirebaseAuth.<span class="fn">getInstance</span>()
-    <span class="kw">private lateinit var</span> googleSignInClient: GoogleSignInClient
-    <span class="kw">private val</span> RC_SIGN_IN = 9001
+googleSignInClient = GoogleSignIn.<span class="fn">getClient</span>(<span class="kw">this</span>, gso)
 
-    <span class="kw">override fun</span> <span class="fn">onCreate</span>(savedInstanceState: Bundle?) {
-        <span class="kw">super</span>.<span class="fn">onCreate</span>(savedInstanceState)
-
-        <span class="cmt">// Configurar Google Sign-In</span>
-        <span class="kw">val</span> gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .<span class="fn">requestIdToken</span>(<span class="fn">getString</span>(R.string.default_web_client_id))
-            .<span class="fn">requestEmail</span>()
-            .<span class="fn">build</span>()
-
-        googleSignInClient = GoogleSignIn.<span class="fn">getClient</span>(<span class="kw">this</span>, gso)
-    }
-
-    <span class="cmt">// Iniciar flujo de Google Sign-In</span>
-    <span class="kw">fun</span> <span class="fn">signInConGoogle</span>() {
-        <span class="kw">val</span> signInIntent = googleSignInClient.signInIntent
-        <span class="fn">startActivityForResult</span>(signInIntent, RC_SIGN_IN)
-    }
-
-    <span class="cmt">// Recibir resultado del selector de cuenta Google</span>
-    <span class="kw">override fun</span> <span class="fn">onActivityResult</span>(requestCode: <span class="kw">Int</span>, resultCode: <span class="kw">Int</span>, data: Intent?) {
-        <span class="kw">super</span>.<span class="fn">onActivityResult</span>(requestCode, resultCode, data)
-        <span class="kw">if</span> (requestCode == RC_SIGN_IN) {
-            <span class="kw">val</span> task = GoogleSignIn.<span class="fn">getSignedInAccountFromIntent</span>(data)
-            <span class="kw">val</span> account = task.<span class="fn">getResult</span>(ApiException::<span class="kw">class</span>.java)
-            <span class="fn">firebaseAuthConGoogle</span>(account.idToken!!)
+<span class="cmt">// Autenticar en Firebase con el token de Google</span>
+<span class="kw">private fun</span> <span class="fn">firebaseAuthConGoogle</span>(idToken: <span class="kw">String</span>) {
+    <span class="kw">val</span> credential = GoogleAuthProvider.<span class="fn">getCredential</span>(idToken, <span class="kw">null</span>)
+    auth.<span class="fn">signInWithCredential</span>(credential)
+        .<span class="fn">addOnCompleteListener</span> { task ->
+            <span class="kw">if</span> (task.isSuccessful) Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Bienvenido ${auth.currentUser?.displayName}"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
         }
-    }
-
-    <span class="cmt">// Autenticar en Firebase con el token de Google</span>
-    <span class="kw">private fun</span> <span class="fn">firebaseAuthConGoogle</span>(idToken: <span class="kw">String</span>) {
-        <span class="kw">val</span> credential = GoogleAuthProvider.<span class="fn">getCredential</span>(idToken, <span class="kw">null</span>)
-        auth.<span class="fn">signInWithCredential</span>(credential)
-            .<span class="fn">addOnCompleteListener</span> { task ->
-                <span class="kw">if</span> (task.isSuccessful) {
-                    <span class="kw">val</span> user = auth.currentUser
-                    <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Bienvenido ${user?.displayName}"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-                }
-            }
-    }
 }</div>
-            <ul class="caracteristicas">
-                <li>El <strong>idToken</strong> de Google se intercambia por una sesión de Firebase</li>
-                <li>Firebase guarda al usuario automáticamente en Authentication Console</li>
-                <li>Puedes obtener nombre, email y foto del usuario de Google</li>
-            </ul>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">👤</span>Obtener usuario actual</h2>
             <div class="ejemplo-codigo"><span class="kw">val</span> user = FirebaseAuth.<span class="fn">getInstance</span>().currentUser
-
 <span class="kw">if</span> (user != <span class="kw">null</span>) {
-    <span class="kw">val</span> nombre = user.displayName   <span class="cmt">// Nombre del usuario</span>
-    <span class="kw">val</span> email  = user.email          <span class="cmt">// Correo electrónico</span>
-    <span class="kw">val</span> foto   = user.photoUrl       <span class="cmt">// URL de foto de perfil</span>
-    <span class="kw">val</span> uid    = user.uid            <span class="cmt">// ID único del usuario</span>
-} <span class="kw">else</span> {
-    <span class="cmt">// No hay sesión activa → redirigir a Login</span>
-}</div>
+    <span class="kw">val</span> nombre = user.displayName
+    <span class="kw">val</span> email  = user.email
+    <span class="kw">val</span> uid    = user.uid
+} <span class="kw">else</span> { <span class="cmt">// No hay sesión → redirigir a Login</span> }</div>
         </div>
     </div>
 </div>
 
+<!-- ========== DEBER 3 ========== -->
 <div id="page-deber3" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="poo-wrapper">
         <div class="poo-header">
             <h1>🔥 Deber 3: CRUD con Realtime Database</h1>
-            <p>Crear, Leer, Actualizar y Eliminar datos con Firebase Realtime Database — Kotlin (Android)</p>
+            <p>Crear, Leer, Actualizar y Eliminar datos con Firebase — Kotlin (Android)</p>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">📖</span>¿Qué es Firebase Realtime Database?</h2>
-            <div class="definicion">
-                <h3>📋 Definición:</h3>
-                <p><strong>Firebase Realtime Database</strong> es una base de datos NoSQL alojada en la nube que sincroniza datos en tiempo real entre todos los clientes conectados. Los datos se almacenan en formato <strong>JSON</strong> y cualquier cambio se refleja instantáneamente en la app.</p>
-            </div>
-            <div class="ejemplo-visual">
-                <div class="icono">☁️</div>
-                <h4>Sincronización en tiempo real</h4>
-                <p>App escribe dato → Firebase actualiza → Todos los dispositivos conectados reciben el cambio al instante</p>
-            </div>
-            <ul class="caracteristicas">
-                <li>Base de datos <strong>NoSQL</strong> en la nube</li>
-                <li>Sincronización en <strong>tiempo real</strong> sin necesidad de polling</li>
-                <li>Funciona también en modo <strong>offline</strong></li>
-                <li>Los datos se estructuran como un <strong>árbol JSON</strong></li>
-            </ul>
+            <div class="definicion"><h3>📋 Definición:</h3><p><strong>Firebase Realtime Database</strong> es una base de datos NoSQL en la nube que sincroniza datos en tiempo real. Los datos se almacenan en formato <strong>JSON</strong>.</p></div>
+            <div class="ejemplo-visual"><div class="icono">☁️</div><h4>Sincronización en tiempo real</h4><p>App escribe dato → Firebase actualiza → Todos los dispositivos reciben el cambio al instante</p></div>
+            <ul class="caracteristicas"><li>Base de datos <strong>NoSQL</strong> en la nube</li><li>Sincronización en <strong>tiempo real</strong></li><li>Funciona en modo <strong>offline</strong></li><li>Datos en árbol <strong>JSON</strong></li></ul>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">⚙️</span>Configuración</h2>
-            <div class="ejemplo-codigo"><span class="cmt">// build.gradle (app)</span>
-implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</span>)
-
-<span class="cmt">// Obtener referencia a la base de datos</span>
-<span class="kw">val</span> database = FirebaseDatabase.<span class="fn">getInstance</span>()
-<span class="kw">val</span> ref = database.<span class="fn">getReference</span>(<span class="str">"productos"</span>) <span class="cmt">// Nodo raíz</span></div>
+            <h2><span class="concepto-num">➕</span>CREATE</h2>
+            <div class="ejemplo-codigo"><span class="kw">val</span> ref = FirebaseDatabase.<span class="fn">getInstance</span>().<span class="fn">getReference</span>(<span class="str">"productos"</span>)
+<span class="kw">val</span> id = ref.<span class="fn">push</span>().key!!
+ref.<span class="fn">child</span>(id).<span class="fn">setValue</span>(<span class="fn">Producto</span>(nombre, precio, stock))
+    .<span class="fn">addOnSuccessListener</span> { Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Creado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>() }</div>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">➕</span>CREATE — Crear datos</h2>
-            <div class="definicion"><h3>📋 Insertar un nuevo registro:</h3><p>Se usa <strong>push()</strong> para generar una clave única automáticamente, o <strong>setValue()</strong> con una clave propia.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">data class</span> <span class="fn">Producto</span>(
-    <span class="kw">val</span> nombre: <span class="kw">String</span> = <span class="str">""</span>,
-    <span class="kw">val</span> precio: <span class="kw">Double</span> = 0.0,
-    <span class="kw">val</span> stock: <span class="kw">Int</span> = 0
-)
-
-<span class="kw">fun</span> <span class="fn">crearProducto</span>(nombre: <span class="kw">String</span>, precio: <span class="kw">Double</span>, stock: <span class="kw">Int</span>) {
-    <span class="kw">val</span> ref = FirebaseDatabase.<span class="fn">getInstance</span>().<span class="fn">getReference</span>(<span class="str">"productos"</span>)
-    <span class="kw">val</span> nuevoId = ref.<span class="fn">push</span>().key!! <span class="cmt">// Genera ID único</span>
-    <span class="kw">val</span> producto = <span class="fn">Producto</span>(nombre, precio, stock)
-
-    ref.<span class="fn">child</span>(nuevoId).<span class="fn">setValue</span>(producto)
-        .<span class="fn">addOnSuccessListener</span> {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Producto creado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
+            <h2><span class="concepto-num">📋</span>READ</h2>
+            <div class="ejemplo-codigo">ref.<span class="fn">addValueEventListener</span>(<span class="kw">object</span> : ValueEventListener {
+    <span class="kw">override fun</span> <span class="fn">onDataChange</span>(snapshot: DataSnapshot) {
+        <span class="kw">val</span> lista = mutableListOf&lt;Producto&gt;()
+        <span class="kw">for</span> (item <span class="kw">in</span> snapshot.children) {
+            item.<span class="fn">getValue</span>(Producto::<span class="kw">class</span>.java)?.<span class="kw">let</span> { lista.<span class="fn">add</span>(it) }
         }
-        .<span class="fn">addOnFailureListener</span> {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Error al crear"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-        }
-}</div>
+        adapter.<span class="fn">actualizarLista</span>(lista)
+    }
+    <span class="kw">override fun</span> <span class="fn">onCancelled</span>(error: DatabaseError) { }
+})</div>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">📋</span>READ — Leer datos</h2>
-            <div class="definicion"><h3>📋 Escuchar cambios en tiempo real:</h3><p>Con <strong>addValueEventListener</strong> la app recibe los datos automáticamente cada vez que cambian en Firebase.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">fun</span> <span class="fn">leerProductos</span>() {
-    <span class="kw">val</span> ref = FirebaseDatabase.<span class="fn">getInstance</span>().<span class="fn">getReference</span>(<span class="str">"productos"</span>)
-
-    ref.<span class="fn">addValueEventListener</span>(<span class="kw">object</span> : ValueEventListener {
-        <span class="kw">override fun</span> <span class="fn">onDataChange</span>(snapshot: DataSnapshot) {
-            <span class="kw">val</span> lista = mutableListOf&lt;Producto&gt;()
-            <span class="kw">for</span> (item <span class="kw">in</span> snapshot.children) {
-                <span class="kw">val</span> producto = item.<span class="fn">getValue</span>(Producto::<span class="kw">class</span>.java)
-                producto?.<span class="kw">let</span> { lista.<span class="fn">add</span>(it) }
-            }
-            <span class="cmt">// Actualizar RecyclerView con la lista</span>
-            adapter.<span class="fn">actualizarLista</span>(lista)
-        }
-
-        <span class="kw">override fun</span> <span class="fn">onCancelled</span>(error: DatabaseError) {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>@MainActivity, error.message, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-        }
-    })
-}</div>
+            <h2><span class="concepto-num">✏️</span>UPDATE</h2>
+            <div class="ejemplo-codigo">ref.<span class="fn">child</span>(id).<span class="fn">updateChildren</span>(<span class="fn">mapOf</span>(<span class="str">"precio"</span> to nuevoPrecio, <span class="str">"stock"</span> to nuevoStock))
+    .<span class="fn">addOnSuccessListener</span> { Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Actualizado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>() }</div>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">✏️</span>UPDATE — Actualizar datos</h2>
-            <div class="definicion"><h3>📋 Modificar campos específicos:</h3><p>Se usa <strong>updateChildren()</strong> para actualizar solo los campos que cambiaron, sin sobreescribir todo el registro.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">fun</span> <span class="fn">actualizarProducto</span>(id: <span class="kw">String</span>, nuevoPrecio: <span class="kw">Double</span>, nuevoStock: <span class="kw">Int</span>) {
-    <span class="kw">val</span> ref = FirebaseDatabase.<span class="fn">getInstance</span>().<span class="fn">getReference</span>(<span class="str">"productos"</span>)
-
-    <span class="kw">val</span> cambios = <span class="fn">mapOf</span>(
-        <span class="str">"precio"</span> to nuevoPrecio,
-        <span class="str">"stock"</span>  to nuevoStock
-    )
-
-    ref.<span class="fn">child</span>(id).<span class="fn">updateChildren</span>(cambios)
-        .<span class="fn">addOnSuccessListener</span> {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Actualizado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-        }
-}</div>
-        </div>
-
-        <div class="concepto">
-            <h2><span class="concepto-num">🗑️</span>DELETE — Eliminar datos</h2>
-            <div class="definicion"><h3>📋 Eliminar un registro:</h3><p>Se usa <strong>removeValue()</strong> sobre el nodo específico que quieres eliminar.</p></div>
-            <div class="ejemplo-codigo"><span class="kw">fun</span> <span class="fn">eliminarProducto</span>(id: <span class="kw">String</span>) {
-    <span class="kw">val</span> ref = FirebaseDatabase.<span class="fn">getInstance</span>().<span class="fn">getReference</span>(<span class="str">"productos"</span>)
-
-    ref.<span class="fn">child</span>(id).<span class="fn">removeValue</span>()
-        .<span class="fn">addOnSuccessListener</span> {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Eliminado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-        }
-        .<span class="fn">addOnFailureListener</span> {
-            <span class="fn">Toast</span>.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Error al eliminar"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>()
-        }
-}</div>
+            <h2><span class="concepto-num">🗑️</span>DELETE</h2>
+            <div class="ejemplo-codigo">ref.<span class="fn">child</span>(id).<span class="fn">removeValue</span>()
+    .<span class="fn">addOnSuccessListener</span> { Toast.<span class="fn">makeText</span>(<span class="kw">this</span>, <span class="str">"Eliminado ✓"</span>, Toast.LENGTH_SHORT).<span class="fn">show</span>() }</div>
             <div class="comparacion">
                 <div class="item-comp"><h4>➕ CREATE</h4><p>push().key + setValue()</p></div>
                 <div class="item-comp"><h4>📋 READ</h4><p>addValueEventListener()</p></div>
@@ -993,6 +522,7 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
     </div>
 </div>
 
+<!-- ========== DEBER 4 ========== -->
 <div id="page-deber4" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="poo-wrapper">
@@ -1000,153 +530,70 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
             <h1>🗄️ Deber 4: CRUD con Room</h1>
             <p>Persistencia de datos local con Room Database — Kotlin (Android)</p>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">📖</span>¿Qué es Room?</h2>
-            <div class="definicion">
-                <h3>📋 Definición:</h3>
-                <p><strong>Room</strong> es una biblioteca de Android Jetpack que proporciona una capa de abstracción sobre <strong>SQLite</strong>. Permite trabajar con bases de datos locales de forma más sencilla y segura usando anotaciones de Kotlin.</p>
-            </div>
-            <div class="ejemplo-visual">
-                <div class="icono">📱</div>
-                <h4>Persistencia local sin internet</h4>
-                <p>Los datos se guardan directamente en el dispositivo. Funciona sin conexión y es ideal para datos del usuario.</p>
-            </div>
-            <ul class="caracteristicas">
-                <li>Abstracción sobre <strong>SQLite</strong> nativo de Android</li>
-                <li>Usa <strong>anotaciones</strong> para definir tablas y consultas</li>
-                <li>Compatible con <strong>LiveData</strong> y <strong>Flow</strong> para actualizaciones reactivas</li>
-                <li>Verifica las consultas SQL en <strong>tiempo de compilación</strong></li>
-            </ul>
+            <div class="definicion"><h3>📋 Definición:</h3><p><strong>Room</strong> es una biblioteca de Android Jetpack que proporciona una capa de abstracción sobre <strong>SQLite</strong>. Permite trabajar con bases de datos locales usando anotaciones de Kotlin.</p></div>
+            <div class="ejemplo-visual"><div class="icono">📱</div><h4>Persistencia local sin internet</h4><p>Los datos se guardan directamente en el dispositivo. Funciona sin conexión.</p></div>
+            <ul class="caracteristicas"><li>Abstracción sobre <strong>SQLite</strong></li><li>Usa <strong>anotaciones</strong> para definir tablas</li><li>Compatible con <strong>LiveData</strong> y <strong>Flow</strong></li><li>Verifica SQL en <strong>tiempo de compilación</strong></li></ul>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">⚙️</span>Configuración</h2>
-            <div class="ejemplo-codigo"><span class="cmt">// build.gradle (app)</span>
-<span class="kw">plugins</span> {
-    id(<span class="str">"com.google.devtools.ksp"</span>)
-}
-
-<span class="fn">dependencies</span> {
-    <span class="kw">val</span> roomVersion = <span class="str">"2.6.1"</span>
-    implementation(<span class="str">"androidx.room:room-runtime:$roomVersion"</span>)
-    implementation(<span class="str">"androidx.room:room-ktx:$roomVersion"</span>)
-    ksp(<span class="str">"androidx.room:room-compiler:$roomVersion"</span>)
-}</div>
-        </div>
-
-        <div class="concepto">
-            <h2><span class="concepto-num">1️⃣</span>Entity — La tabla</h2>
-            <div class="definicion"><h3>📋 @Entity define la tabla en la base de datos:</h3><p>Cada clase anotada con <strong>@Entity</strong> se convierte en una tabla de SQLite. Cada propiedad es una columna.</p></div>
+            <h2><span class="concepto-num">1️⃣</span>@Entity — La tabla</h2>
             <div class="ejemplo-codigo"><span class="kw">@Entity</span>(tableName = <span class="str">"productos"</span>)
 <span class="kw">data class</span> <span class="fn">Producto</span>(
-    <span class="kw">@PrimaryKey</span>(autoGenerate = <span class="kw">true</span>)
-    <span class="kw">val</span> id: <span class="kw">Int</span> = 0,
-
-    <span class="kw">@ColumnInfo</span>(name = <span class="str">"nombre"</span>)
-    <span class="kw">val</span> nombre: <span class="kw">String</span>,
-
-    <span class="kw">@ColumnInfo</span>(name = <span class="str">"precio"</span>)
-    <span class="kw">val</span> precio: <span class="kw">Double</span>,
-
-    <span class="kw">@ColumnInfo</span>(name = <span class="str">"stock"</span>)
-    <span class="kw">val</span> stock: <span class="kw">Int</span>
+    <span class="kw">@PrimaryKey</span>(autoGenerate = <span class="kw">true</span>) <span class="kw">val</span> id: <span class="kw">Int</span> = 0,
+    <span class="kw">@ColumnInfo</span>(name = <span class="str">"nombre"</span>) <span class="kw">val</span> nombre: <span class="kw">String</span>,
+    <span class="kw">@ColumnInfo</span>(name = <span class="str">"precio"</span>) <span class="kw">val</span> precio: <span class="kw">Double</span>,
+    <span class="kw">@ColumnInfo</span>(name = <span class="str">"stock"</span>)  <span class="kw">val</span> stock: <span class="kw">Int</span>
 )</div>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">2️⃣</span>DAO — Las operaciones CRUD</h2>
-            <div class="definicion"><h3>📋 @Dao contiene todas las consultas:</h3><p>El <strong>Data Access Object</strong> define las funciones para interactuar con la base de datos usando anotaciones SQL.</p></div>
+            <h2><span class="concepto-num">2️⃣</span>@Dao — Las operaciones CRUD</h2>
             <div class="ejemplo-codigo"><span class="kw">@Dao</span>
 <span class="kw">interface</span> <span class="fn">ProductoDao</span> {
-
-    <span class="cmt">// CREATE - Insertar producto</span>
     <span class="kw">@Insert</span>(onConflict = OnConflictStrategy.REPLACE)
-    <span class="kw">suspend fun</span> <span class="fn">insertar</span>(producto: Producto)
+    <span class="kw">suspend fun</span> <span class="fn">insertar</span>(p: Producto)
 
-    <span class="cmt">// READ - Obtener todos los productos</span>
     <span class="kw">@Query</span>(<span class="str">"SELECT * FROM productos ORDER BY nombre ASC"</span>)
     <span class="kw">fun</span> <span class="fn">obtenerTodos</span>(): Flow&lt;List&lt;Producto&gt;&gt;
 
-    <span class="cmt">// READ - Buscar por ID</span>
-    <span class="kw">@Query</span>(<span class="str">"SELECT * FROM productos WHERE id = :id"</span>)
-    <span class="kw">suspend fun</span> <span class="fn">obtenerPorId</span>(id: <span class="kw">Int</span>): Producto?
-
-    <span class="cmt">// UPDATE - Actualizar producto</span>
     <span class="kw">@Update</span>
-    <span class="kw">suspend fun</span> <span class="fn">actualizar</span>(producto: Producto)
+    <span class="kw">suspend fun</span> <span class="fn">actualizar</span>(p: Producto)
 
-    <span class="cmt">// DELETE - Eliminar producto</span>
     <span class="kw">@Delete</span>
-    <span class="kw">suspend fun</span> <span class="fn">eliminar</span>(producto: Producto)
-
-    <span class="cmt">// DELETE - Eliminar todos</span>
-    <span class="kw">@Query</span>(<span class="str">"DELETE FROM productos"</span>)
-    <span class="kw">suspend fun</span> <span class="fn">eliminarTodos</span>()
+    <span class="kw">suspend fun</span> <span class="fn">eliminar</span>(p: Producto)
 }</div>
         </div>
-
         <div class="concepto">
-            <h2><span class="concepto-num">3️⃣</span>Database — La base de datos</h2>
-            <div class="definicion"><h3>📋 @Database conecta todo:</h3><p>La clase abstracta anotada con <strong>@Database</strong> es el punto de entrada principal. Se crea como <strong>Singleton</strong> para evitar múltiples instancias.</p></div>
+            <h2><span class="concepto-num">3️⃣</span>@Database — Punto de entrada</h2>
             <div class="ejemplo-codigo"><span class="kw">@Database</span>(entities = [Producto::<span class="kw">class</span>], version = 1, exportSchema = <span class="kw">false</span>)
 <span class="kw">abstract class</span> <span class="fn">AppDatabase</span> : RoomDatabase() {
-
     <span class="kw">abstract fun</span> <span class="fn">productoDao</span>(): ProductoDao
-
     <span class="kw">companion object</span> {
-        <span class="kw">@Volatile</span>
-        <span class="kw">private var</span> INSTANCE: AppDatabase? = <span class="kw">null</span>
-
-        <span class="kw">fun</span> <span class="fn">getInstance</span>(context: Context): AppDatabase {
-            <span class="kw">return</span> INSTANCE ?: <span class="kw">synchronized</span>(<span class="kw">this</span>) {
-                Room.<span class="fn">databaseBuilder</span>(
-                    context.applicationContext,
-                    AppDatabase::<span class="kw">class</span>.java,
-                    <span class="str">"mi_base_de_datos"</span>
-                ).<span class="fn">build</span>().<span class="kw">also</span> { INSTANCE = it }
-            }
+        <span class="kw">@Volatile private var</span> INSTANCE: AppDatabase? = <span class="kw">null</span>
+        <span class="kw">fun</span> <span class="fn">getInstance</span>(context: Context) = INSTANCE ?: <span class="kw">synchronized</span>(<span class="kw">this</span>) {
+            Room.<span class="fn">databaseBuilder</span>(context.applicationContext, AppDatabase::<span class="kw">class</span>.java, <span class="str">"mi_bd"</span>)
+                .<span class="fn">build</span>().<span class="kw">also</span> { INSTANCE = it }
         }
     }
 }</div>
         </div>
-
         <div class="concepto">
             <h2><span class="concepto-num">4️⃣</span>Uso en la Activity</h2>
-            <div class="ejemplo-codigo"><span class="kw">class</span> <span class="fn">MainActivity</span> : AppCompatActivity() {
+            <div class="ejemplo-codigo">dao = AppDatabase.<span class="fn">getInstance</span>(<span class="kw">this</span>).<span class="fn">productoDao</span>()
 
-    <span class="kw">private lateinit var</span> dao: ProductoDao
-
-    <span class="kw">override fun</span> <span class="fn">onCreate</span>(savedInstanceState: Bundle?) {
-        <span class="kw">super</span>.<span class="fn">onCreate</span>(savedInstanceState)
-        dao = AppDatabase.<span class="fn">getInstance</span>(<span class="kw">this</span>).<span class="fn">productoDao</span>()
-
-        <span class="cmt">// Observar cambios en tiempo real con Flow</span>
-        lifecycleScope.<span class="fn">launch</span> {
-            dao.<span class="fn">obtenerTodos</span>().<span class="fn">collect</span> { lista ->
-                adapter.<span class="fn">actualizarLista</span>(lista)
-            }
-        }
-    }
-
-    <span class="cmt">// Insertar nuevo producto</span>
-    <span class="kw">private fun</span> <span class="fn">agregarProducto</span>() {
-        lifecycleScope.<span class="fn">launch</span> {
-            dao.<span class="fn">insertar</span>(<span class="fn">Producto</span>(nombre = <span class="str">"Laptop"</span>, precio = 999.99, stock = 5))
-        }
-    }
-
-    <span class="cmt">// Eliminar producto</span>
-    <span class="kw">private fun</span> <span class="fn">borrar</span>(producto: Producto) {
-        lifecycleScope.<span class="fn">launch</span> {
-            dao.<span class="fn">eliminar</span>(producto)
-        }
-    }
+<span class="cmt">// Observar en tiempo real</span>
+lifecycleScope.<span class="fn">launch</span> {
+    dao.<span class="fn">obtenerTodos</span>().<span class="fn">collect</span> { lista -> adapter.<span class="fn">actualizarLista</span>(lista) }
 }
-</div>
+
+<span class="cmt">// Insertar</span>
+lifecycleScope.<span class="fn">launch</span> { dao.<span class="fn">insertar</span>(<span class="fn">Producto</span>(nombre = <span class="str">"Laptop"</span>, precio = 999.99, stock = 5)) }
+
+<span class="cmt">// Eliminar</span>
+lifecycleScope.<span class="fn">launch</span> { dao.<span class="fn">eliminar</span>(producto) }</div>
             <div class="comparacion">
-                <div class="item-comp"><h4>@Entity</h4><p>Define la tabla y sus columnas</p></div>
-                <div class="item-comp"><h4>@Dao</h4><p>Define las operaciones CRUD</p></div>
+                <div class="item-comp"><h4>@Entity</h4><p>Define la tabla y columnas</p></div>
+                <div class="item-comp"><h4>@Dao</h4><p>Define operaciones CRUD</p></div>
                 <div class="item-comp"><h4>@Database</h4><p>Punto de entrada, crea la BD</p></div>
                 <div class="item-comp"><h4>Flow</h4><p>Actualiza la UI en tiempo real</p></div>
             </div>
@@ -1160,53 +607,50 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
     <div class="soon-wrapper">
         <div class="soon-icon">🎯</div>
         <div class="soon-title">Lección 1: Actuación en Clase</div>
-        <div class="soon-desc">Esta sección está lista para que el docente de la evaluación de participación y desempeño.</div>
-        
+        <div class="soon-desc">Evaluación de participación y desempeño en sesiones presenciales.</div>
+        <div class="soon-badge">Próximamente</div>
     </div>
 </div>
-
 <div id="page-leccion2" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="soon-wrapper">
         <div class="soon-icon">📝</div>
         <div class="soon-title">Lección 2: Elaboración del Proyecto Integrador Teórico</div>
-        <div class="soon-desc">Esta sección está lista para que agregues la documentación del proyecto.</div>
+        <div class="soon-desc">Documentación y planificación del proyecto final.</div>
         <div class="soon-badge">Próximamente</div>
     </div>
 </div>
-
 <div id="page-leccion3" class="page">
     <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
     <div class="soon-wrapper">
         <div class="soon-icon">🚀</div>
         <div class="soon-title">Lección 3: Presentación del Proyecto Integrador</div>
-        <div class="soon-desc">Esta sección está lista para que agregues el contenido de la presentación final.</div>
+        <div class="soon-desc">Exposición y defensa del proyecto final integrador.</div>
         <div class="soon-badge">Próximamente</div>
     </div>
 </div>
 
-<script>
-    let todosLosUsuarios = [];
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const USUARIOS = [
+        {id:1,name:"Andrés Moreira Villacís",username:"andresmoreira",email:"andres.moreira@gmail.com",phone:"0991-234-567",website:"andresmoreira.ec",address:{city:"Quito"},company:{name:"Corporación Favorita"}},
+        {id:2,name:"Gabriela Suárez Intriago",username:"gaby.suarez",email:"gabriela.suarez@hotmail.com",phone:"0982-345-678",website:"gabsuarez.com.ec",address:{city:"Guayaquil"},company:{name:"Banco Pichincha"}},
+        {id:3,name:"Santiago Espinoza Cevallos",username:"santie_ec",email:"santiago.espinoza@yahoo.com",phone:"0973-456-789",website:"sespinoza.ec",address:{city:"Cuenca"},company:{name:"Pronaca S.A."}},
+        {id:4,name:"Valeria Almeida Paredes",username:"vale.almeida",email:"valeria.almeida@gmail.com",phone:"0964-567-890",website:"valeriaalmeida.ec",address:{city:"Ambato"},company:{name:"Industrias Lácteas Toni"}},
+        {id:5,name:"Carlos Hidalgo Benítez",username:"carloshdlg",email:"carlos.hidalgo@outlook.com",phone:"0955-678-901",website:"carloshidalgo.net",address:{city:"Loja"},company:{name:"CNT EP"}},
+        {id:6,name:"María José Vega Rueda",username:"majo.vega",email:"mariajose.vega@gmail.com",phone:"0946-789-012",website:"majovega.ec",address:{city:"Manta"},company:{name:"Pacari Chocolate"}},
+        {id:7,name:"Diego Armijos Sánchez",username:"diego.armijos",email:"diego.armijos@hotmail.com",phone:"0937-890-123",website:"diegoarmijos.com",address:{city:"Machala"},company:{name:"Exportadora Ubesa"}},
+        {id:8,name:"Paola Ramos Enríquez",username:"paola_ramos",email:"paola.ramos@gmail.com",phone:"0928-901-234",website:"paolaramos.ec",address:{city:"Riobamba"},company:{name:"Almacenes De Prati"}},
+        {id:9,name:"Luis Fernando Cadena",username:"luisfc_ec",email:"luis.cadena@yahoo.com",phone:"0919-012-345",website:"luiscadena.net",address:{city:"Ibarra"},company:{name:"Cervecería Nacional"}},
+        {id:10,name:"Fernanda Ochoa Montoya",username:"fer.ochoa",email:"fernanda.ochoa@gmail.com",phone:"0910-123-456",website:"ferochoa.ec",address:{city:"Esmeraldas"},company:{name:"Telconet S.A."}}
+    ];
+
+    let filtrados = [...USUARIOS];
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         window.scrollTo(0, 0);
-        if (pageId === 'page-deber1' && todosLosUsuarios.length === 0) {
-            cargarUsuarios();
-        }
-    }
-
-    async function cargarUsuarios() {op
-        try {
-            const res = await fetch('https://jsonplaceholder.typicode.com/users');
-            const users = await res.json();
-            todosLosUsuarios = users;
-            document.getElementById('loading-api').style.display = 'none';
-            renderUsuarios(users);
-        } catch (e) {
-            document.getElementById('loading-api').innerHTML = '<div style="font-size:2em;margin-bottom:12px;">❌</div><p>Error al cargar la API. Verifica tu conexión.</p>';
-        }
+        if (pageId === 'page-deber1') renderUsuarios(USUARIOS);
     }
 
     function renderUsuarios(users) {
@@ -1217,9 +661,7 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
                  onmouseover="this.style.borderColor='#5b6af0';this.style.transform='translateY(-3px)'"
                  onmouseout="this.style.borderColor='rgba(91,106,240,0.2)';this.style.transform='translateY(0)'">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-                    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5b6af0,#e04bff);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1em;flex-shrink:0;">
-                        ${u.name.charAt(0)}
-                    </div>
+                    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5b6af0,#e04bff);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1em;flex-shrink:0;">${u.name.charAt(0)}</div>
                     <div>
                         <div style="font-weight:700;font-size:1em;">${u.name}</div>
                         <div style="font-family:'Space Mono',monospace;font-size:0.7em;color:#7a7a9a;">@${u.username}</div>
@@ -1234,15 +676,12 @@ implementation(<span class="str">"com.google.firebase:firebase-database-ktx"</sp
                     <div style="font-size:0.82em;color:#7a7a9a;">🏢 <span style="color:#e8e8f0;">${u.company.name}</span></div>
                 </div>
             </div>
-        `).join('');
-    }
+        `).join('');    }
 
     function filtrarUsuarios() {
-        const query = document.getElementById('buscador').value.toLowerCase();
-        const filtrados = todosLosUsuarios.filter(u => u.name.toLowerCase().includes(query));
-        renderUsuarios(filtrados);
+        const q = document.getElementById('buscador').value.toLowerCase();
+        renderUsuarios(USUARIOS.filter(u => u.name.toLowerCase().includes(q)));
     }
 </script>
-
 </body>
 </html>
