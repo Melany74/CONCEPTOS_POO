@@ -137,6 +137,8 @@
             <div class="stat-divider"></div>
             <div class="stat"><span class="stat-value"></span><span class="stat-label">Lecciones</span></div>
             <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-value"></span><span class="stat-label">Examen Final</span></div>
+            <div class="stat-divider"></div>
             <div class="stat"><span class="stat-value"></span><span class="stat-label">Total Secciones</span></div>
         </div>
         <div class="section">
@@ -189,6 +191,20 @@
                         <div class="card-tag tag-d">Deber 04</div>
                         <div class="card-title">CRUD utilizando Room</div>
                         <div class="card-desc">Persistencia local con Room Database</div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-label">Examen</div>
+            <div class="cards-grid">
+                <div class="card featured" onclick="showPage('page-examen')">
+                    <div class="card-icon" style="background:rgba(255,160,50,0.12);border:1px solid rgba(255,160,50,0.3);">🎓</div>
+                    <div class="card-content">
+                        <div class="card-tag" style="background:rgba(255,160,50,0.12);color:#ffb347;border:1px solid rgba(255,160,50,0.3);">Examen Final</div>
+                        <div class="card-title">Examen Práctico y Teórico</div>
+                        <div class="card-desc">Reunión Zoom con cliente real — demostración de la app y acuerdo económico</div>
                     </div>
                     <div class="card-arrow">→</div>
                 </div>
@@ -371,13 +387,13 @@ fetch(url)
             <div class="definicion"><h3>🌐 Endpoint:</h3><p style="font-family:'Space Mono',monospace;color:#00e5c0;font-size:0.95em;margin-top:8px;">https://jsonplaceholder.typicode.com/users</p></div>
             <div class="ejemplo-codigo">{
   <span class="str">"id"</span>: 1,
-  <span class="str">"name"</span>: <span class="str">"Damon Salvatore"</span>,
-  <span class="str">"username"</span>: <span class="str">"DamoonSalv"</span>,
+  <span class="str">"name"</span>: <span class="str">"Leanne Graham"</span>,
+  <span class="str">"username"</span>: <span class="str">"Bret"</span>,
   <span class="str">"email"</span>: <span class="str">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cb98a2a5a8aeb9ae8baabbb9a2a7e5a9a2b1">[email&#160;protected]</a>"</span>,
   <span class="str">"phone"</span>: <span class="str">"1-770-736-8031"</span>,
   <span class="str">"website"</span>: <span class="str">"hildegard.org"</span>,
-  <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Covington"</span> },
-  <span class="str">"company"</span>: { <span class="str">"name"</span>: <span class="str">"Estados Unidos"</span> }
+  <span class="str">"address"</span>: { <span class="str">"city"</span>: <span class="str">"Gwenborough"</span> },
+  <span class="str">"company"</span>: { <span class="str">"name"</span>: <span class="str">"Romaguera-Crona"</span> }
 }</div>
         </div>
         <div class="concepto">
@@ -630,6 +646,45 @@ lifecycleScope.<span class="fn">launch</span> { dao.<span class="fn">eliminar</s
     </div>
 </div>
 
+
+<!-- ========== EXAMEN ========== -->
+<div id="page-examen" class="page">
+    <button class="back-btn" onclick="showPage('page-home')">← Volver al Portal</button>
+    <div class="poo-wrapper">
+        <div class="poo-header">
+            <h1>🎓 Examen Práctico y Teórico</h1>
+            <p>Reunión Zoom con cliente real — Demostración de la app y acuerdo económico</p>
+        </div>
+        <div class="concepto">
+            <h2><span class="concepto-num">📋</span>Descripción del Examen</h2>
+            <div class="definicion">
+                <h3>🎯 Objetivo:</h3>
+                <p>Organizar una reunión de <strong>Zoom con un cliente real</strong> donde se demuestra el funcionamiento completo de la aplicación móvil desarrollada durante el curso, y se llega a un <strong>acuerdo económico</strong> por el proyecto.</p>
+            </div>
+            <ul class="caracteristicas">
+                <li>Presentación en vivo de todas las funcionalidades de la app</li>
+                <li>Explicación técnica del stack utilizado (Firebase, Room, Kotlin)</li>
+                <li>Negociación y acuerdo económico con el cliente</li>
+                <li>Demostración de autenticación, CRUD y consumo de API</li>
+            </ul>
+        </div>
+        <div class="concepto">
+            <h2><span class="concepto-num">🎬</span>Grabación de la Reunión Zoom</h2>
+            <div class="definicion">
+                <h3>📹 Video de la reunión:</h3>
+                <p>Grabación completa de la reunión con el cliente donde se presenta la aplicación y se llega al acuerdo comercial.</p>
+            </div>
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-top:16px;">
+                <iframe
+                    src="https://drive.google.com/file/d/1SW7e2WN3A_cSqzdM1Gk5DwXJALpiEN2k/preview"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const USUARIOS = [
         {id:1,name:"Andrés Moreira Villacís",username:"andresmoreira",email:"andres.moreira@gmail.com",phone:"0991-234-567",website:"andresmoreira.ec",address:{city:"Quito"},company:{name:"Corporación Favorita"}},
